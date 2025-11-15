@@ -1,0 +1,774 @@
+[2025-11-15 18:59:45.243288] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 651 | Method: calendar_adjustment | Seed: 81194779
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.268888] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 701 | Method: calendar_adjustment | Seed: 124924436
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.320326] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 603 | Method: calendar_adjustment | Seed: 599775746
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.325613] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 876 | Method: calendar_adjustment | Seed: 759458610
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.371162] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 502 | Method: calendar_adjustment | Seed: 121759755
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.448758] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 128 | Method: calendar_adjustment | Seed: 940354267
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.547645] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 677 | Method: calendar_adjustment | Seed: 692816013
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.568111] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 977 | Method: calendar_adjustment | Seed: 628600902
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.691111] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 578 | Method: calendar_adjustment | Seed: 180702664
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:45.711535] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 778 | Method: calendar_adjustment | Seed: 641088638
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:46.545907] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 31 | Method: calendar_adjustment | Seed: 682555016
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:46.570861] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 481 | Method: calendar_adjustment | Seed: 21740383
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:46.620685] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 282 | Method: calendar_adjustment | Seed: 981349454
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:46.646089] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 356 | Method: calendar_adjustment | Seed: 715922551
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:46.7425] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 407 | Method: calendar_adjustment | Seed: 997770045
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:46.810439] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 332 | Method: calendar_adjustment | Seed: 347282608
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:46.958101] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 408 | Method: calendar_adjustment | Seed: 151672524
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:46.985708] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 957 | Method: calendar_adjustment | Seed: 149241900
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.026687] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 9 | Method: calendar_adjustment | Seed: 240011640
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.138908] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 259 | Method: calendar_adjustment | Seed: 175027269
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.178836] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 234 | Method: calendar_adjustment | Seed: 177831702
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.185737] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 612 | Method: calendar_adjustment | Seed: 766527334
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.354628] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 909 | Method: calendar_adjustment | Seed: 631345869
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.379914] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 659 | Method: calendar_adjustment | Seed: 407043210
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.388241] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 385 | Method: calendar_adjustment | Seed: 687208283
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.448247] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 485 | Method: calendar_adjustment | Seed: 336415288
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.492256] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 884 | Method: calendar_adjustment | Seed: 552314672
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.567527] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 536 | Method: calendar_adjustment | Seed: 354283333
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.90739] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 986 | Method: calendar_adjustment | Seed: 344832847
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:47.925118] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 13 | Method: calendar_adjustment | Seed: 293406027
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:48.211285] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 563 | Method: calendar_adjustment | Seed: 359706885
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:48.217336] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 937 | Method: calendar_adjustment | Seed: 35058799
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:48.359595] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 15 | Method: calendar_adjustment | Seed: 152313935
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:48.529337] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 714 | Method: calendar_adjustment | Seed: 826581269
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:48.938738] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 141 | Method: calendar_adjustment | Seed: 405761807
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.152796] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 367 | Method: calendar_adjustment | Seed: 47035927
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.1951] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 543 | Method: calendar_adjustment | Seed: 180349251
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.208853] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 117 | Method: calendar_adjustment | Seed: 271472148
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.322796] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 317 | Method: calendar_adjustment | Seed: 759244110
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.394921] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 442 | Method: calendar_adjustment | Seed: 660993535
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.413546] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 942 | Method: calendar_adjustment | Seed: 522571340
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.421186] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 118 | Method: calendar_adjustment | Seed: 921539596
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.438601] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 219 | Method: calendar_adjustment | Seed: 584714598
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.541953] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 792 | Method: calendar_adjustment | Seed: 748994504
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.796518] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 145 | Method: calendar_adjustment | Seed: 977473867
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.831502] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 469 | Method: calendar_adjustment | Seed: 590663881
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.840646] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 70 | Method: calendar_adjustment | Seed: 66276161
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:49.924227] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 420 | Method: calendar_adjustment | Seed: 872943267
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.014937] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 869 | Method: calendar_adjustment | Seed: 6022005
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.029887] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 196 | Method: calendar_adjustment | Seed: 678066343
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.125334] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 920 | Method: calendar_adjustment | Seed: 431874634
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.261658] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 571 | Method: calendar_adjustment | Seed: 758872042
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.271909] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 345 | Method: calendar_adjustment | Seed: 616273351
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.290396] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 72 | Method: calendar_adjustment | Seed: 234272925
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.382497] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 422 | Method: calendar_adjustment | Seed: 700839380
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.497627] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 996 | Method: calendar_adjustment | Seed: 290436073
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.535346] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 946 | Method: calendar_adjustment | Seed: 348694697
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.845957] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 723 | Method: calendar_adjustment | Seed: 517665308
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:50.967135] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 300 | Method: calendar_adjustment | Seed: 286643536
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:51.15168] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 50 | Method: calendar_adjustment | Seed: 447287443
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:51.166886] Stage: Analysis | Scenario: S1sample_size1000 | Rep: 649 | Method: calendar_adjustment | Seed: 10867379
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:54.10793] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 351 | Method: calendar_adjustment | Seed: 810979949
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:54.331571] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 451 | Method: calendar_adjustment | Seed: 639637500
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:54.369192] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 726 | Method: calendar_adjustment | Seed: 312527011
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:54.389743] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 676 | Method: calendar_adjustment | Seed: 314812200
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:54.584477] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 427 | Method: calendar_adjustment | Seed: 11447078
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:54.629466] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 77 | Method: calendar_adjustment | Seed: 582525857
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:54.961876] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 53 | Method: calendar_adjustment | Seed: 157068647
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:55.127528] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 253 | Method: calendar_adjustment | Seed: 532831281
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:55.196274] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 653 | Method: calendar_adjustment | Seed: 267065158
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:55.344652] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 279 | Method: calendar_adjustment | Seed: 845239890
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:55.561228] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 79 | Method: calendar_adjustment | Seed: 204467627
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:55.69411] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 804 | Method: calendar_adjustment | Seed: 957954644
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:55.718263] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 978 | Method: calendar_adjustment | Seed: 987810797
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:56.01858] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 530 | Method: calendar_adjustment | Seed: 453391266
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:56.05754] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 606 | Method: calendar_adjustment | Seed: 548237647
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:56.589025] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 257 | Method: calendar_adjustment | Seed: 457133683
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:56.688647] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 532 | Method: calendar_adjustment | Seed: 945984009
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:56.722114] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 807 | Method: calendar_adjustment | Seed: 118649303
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:56.998071] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 208 | Method: calendar_adjustment | Seed: 619993696
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:57.753395] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 260 | Method: calendar_adjustment | Seed: 652388767
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:57.998875] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 485 | Method: calendar_adjustment | Seed: 632319534
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:58.315784] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 585 | Method: calendar_adjustment | Seed: 303162652
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:58.511183] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 562 | Method: calendar_adjustment | Seed: 484527160
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:58.732009] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 686 | Method: calendar_adjustment | Seed: 885421096
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:58.752433] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 437 | Method: calendar_adjustment | Seed: 852778079
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:58.923616] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 614 | Method: calendar_adjustment | Seed: 998704057
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.043622] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 363 | Method: calendar_adjustment | Seed: 396971999
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.093251] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 289 | Method: calendar_adjustment | Seed: 848805458
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.127615] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 986 | Method: calendar_adjustment | Seed: 703444281
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.188514] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 40 | Method: calendar_adjustment | Seed: 902860381
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.59833] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 388 | Method: calendar_adjustment | Seed: 632944098
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.607777] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 740 | Method: calendar_adjustment | Seed: 244277061
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.715641] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 41 | Method: calendar_adjustment | Seed: 538786283
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.720259] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 291 | Method: calendar_adjustment | Seed: 639983236
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.733485] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 214 | Method: calendar_adjustment | Seed: 367093251
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.810768] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 166 | Method: calendar_adjustment | Seed: 177325868
+Error message: 'breaks' are not unique
+
+[2025-11-15 18:59:59.944236] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 666 | Method: calendar_adjustment | Seed: 921489273
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:00.221469] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 567 | Method: calendar_adjustment | Seed: 557092125
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:00.317649] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 966 | Method: calendar_adjustment | Seed: 742203252
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:00.35331] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 941 | Method: calendar_adjustment | Seed: 156945934
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:00.434825] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 442 | Method: calendar_adjustment | Seed: 109235476
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:00.708816] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 841 | Method: calendar_adjustment | Seed: 430159944
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:00.908349] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 766 | Method: calendar_adjustment | Seed: 829792926
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:01.159789] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 93 | Method: calendar_adjustment | Seed: 571688147
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:01.440416] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 571 | Method: calendar_adjustment | Seed: 64425249
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:01.624446] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 146 | Method: calendar_adjustment | Seed: 369270198
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:01.649053] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 671 | Method: calendar_adjustment | Seed: 260178030
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:01.81554] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 22 | Method: calendar_adjustment | Seed: 611676629
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:01.926332] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 370 | Method: calendar_adjustment | Seed: 287792683
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:02.059896] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 48 | Method: calendar_adjustment | Seed: 221737812
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:02.3052] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 795 | Method: calendar_adjustment | Seed: 213846229
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:02.307521] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 72 | Method: calendar_adjustment | Seed: 254517781
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:02.459076] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 348 | Method: calendar_adjustment | Seed: 179101349
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:02.879822] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 421 | Method: calendar_adjustment | Seed: 799635135
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:03.571957] Stage: Analysis | Scenario: S2sample_size2000 | Rep: 900 | Method: calendar_adjustment | Seed: 301751537
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:08.461046] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 153 | Method: calendar_adjustment | Seed: 124534810
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:08.498675] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 627 | Method: calendar_adjustment | Seed: 593513820
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:09.360999] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 404 | Method: calendar_adjustment | Seed: 651453971
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:09.526044] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 30 | Method: calendar_adjustment | Seed: 969767631
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:10.07294] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 580 | Method: calendar_adjustment | Seed: 313611495
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:10.337574] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 606 | Method: calendar_adjustment | Seed: 397085762
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:10.564931] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 157 | Method: calendar_adjustment | Seed: 579981793
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:10.658496] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 307 | Method: calendar_adjustment | Seed: 798834967
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:11.099934] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 308 | Method: calendar_adjustment | Seed: 861379047
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:11.624966] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 159 | Method: calendar_adjustment | Seed: 937359667
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:12.171104] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 260 | Method: calendar_adjustment | Seed: 506606976
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:12.260529] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 310 | Method: calendar_adjustment | Seed: 414227289
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:13.029639] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 711 | Method: calendar_adjustment | Seed: 660037197
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:13.473707] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 762 | Method: calendar_adjustment | Seed: 363245621
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:13.536742] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 463 | Method: calendar_adjustment | Seed: 42615234
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:14.449607] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 15 | Method: calendar_adjustment | Seed: 304479956
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:15.087102] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 16 | Method: calendar_adjustment | Seed: 749994651
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:15.611294] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 917 | Method: calendar_adjustment | Seed: 789580536
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:15.958765] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 342 | Method: calendar_adjustment | Seed: 431818521
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:16.071356] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 168 | Method: calendar_adjustment | Seed: 400962722
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:16.745681] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 494 | Method: calendar_adjustment | Seed: 328544179
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:16.922009] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 844 | Method: calendar_adjustment | Seed: 855378853
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:17.470021] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 345 | Method: calendar_adjustment | Seed: 723147845
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:18.081746] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 795 | Method: calendar_adjustment | Seed: 782581435
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:18.149909] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 246 | Method: calendar_adjustment | Seed: 622900370
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:18.329691] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 372 | Method: calendar_adjustment | Seed: 121698076
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:18.348029] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 322 | Method: calendar_adjustment | Seed: 354110770
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:18.979151] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 323 | Method: calendar_adjustment | Seed: 461651776
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:19.003293] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 348 | Method: calendar_adjustment | Seed: 173645021
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:19.00676] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 723 | Method: calendar_adjustment | Seed: 785288900
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:19.518016] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 625 | Method: calendar_adjustment | Seed: 943859764
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:19.894351] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 999 | Method: calendar_adjustment | Seed: 464976234
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:21.089883] Stage: Analysis | Scenario: S3sample_size3000 | Rep: 599 | Method: calendar_adjustment | Seed: 551097031
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:25.116844] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 27 | Method: calendar_adjustment | Seed: 454706232
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:25.144892] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 102 | Method: calendar_adjustment | Seed: 411623442
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:26.051273] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 503 | Method: calendar_adjustment | Seed: 669715715
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:26.669264] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 254 | Method: calendar_adjustment | Seed: 205298921
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:26.737143] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 654 | Method: calendar_adjustment | Seed: 229179216
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:28.169303] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 906 | Method: calendar_adjustment | Seed: 94265367
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:28.9011] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 457 | Method: calendar_adjustment | Seed: 630664454
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:29.131296] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 483 | Method: calendar_adjustment | Seed: 543679525
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:29.498074] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 783 | Method: calendar_adjustment | Seed: 794352981
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:30.06486] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 758 | Method: calendar_adjustment | Seed: 904546195
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:31.302844] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 86 | Method: calendar_adjustment | Seed: 477560711
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:32.142623] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 512 | Method: calendar_adjustment | Seed: 387010187
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:32.193534] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 587 | Method: calendar_adjustment | Seed: 560939218
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:32.345575] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 438 | Method: calendar_adjustment | Seed: 868487133
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:33.080995] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 314 | Method: calendar_adjustment | Seed: 270181294
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:33.545294] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 665 | Method: calendar_adjustment | Seed: 257273370
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:33.991032] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 690 | Method: calendar_adjustment | Seed: 619783853
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:34.697899] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 167 | Method: calendar_adjustment | Seed: 163699693
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:35.569124] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 18 | Method: calendar_adjustment | Seed: 935005202
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:36.641916] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 196 | Method: calendar_adjustment | Seed: 494257609
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:37.310053] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 994 | Method: calendar_adjustment | Seed: 67775260
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:37.735147] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 247 | Method: calendar_adjustment | Seed: 624789471
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:38.440343] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 472 | Method: calendar_adjustment | Seed: 828507276
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:39.039277] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 499 | Method: calendar_adjustment | Seed: 247593031
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:39.080853] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 74 | Method: calendar_adjustment | Seed: 668114126
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:39.821543] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 624 | Method: calendar_adjustment | Seed: 168748319
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:40.021773] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 525 | Method: calendar_adjustment | Seed: 121781952
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:40.022891] Stage: Analysis | Scenario: S4sample_size4000 | Rep: 700 | Method: calendar_adjustment | Seed: 591671102
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:44.585129] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 51 | Method: calendar_adjustment | Seed: 339325966
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:44.661442] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 451 | Method: calendar_adjustment | Seed: 317115268
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:44.846428] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 476 | Method: calendar_adjustment | Seed: 341225775
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:47.156881] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 604 | Method: calendar_adjustment | Seed: 31773962
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:48.455601] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 356 | Method: calendar_adjustment | Seed: 465091270
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:48.831145] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 481 | Method: calendar_adjustment | Seed: 577749393
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:49.293809] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 282 | Method: calendar_adjustment | Seed: 361242623
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:49.357413] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 557 | Method: calendar_adjustment | Seed: 424134993
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:49.904409] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 58 | Method: calendar_adjustment | Seed: 455103776
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:50.116705] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 533 | Method: calendar_adjustment | Seed: 698255089
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:51.430797] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 335 | Method: calendar_adjustment | Seed: 717384345
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:54.851391] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 664 | Method: calendar_adjustment | Seed: 497132459
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:55.190136] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 115 | Method: calendar_adjustment | Seed: 516827652
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:56.201587] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 266 | Method: calendar_adjustment | Seed: 277805065
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:57.004227] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 167 | Method: calendar_adjustment | Seed: 106101643
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:57.514452] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 593 | Method: calendar_adjustment | Seed: 235917007
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:58.578555] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 894 | Method: calendar_adjustment | Seed: 296078349
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:58.724844] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 968 | Method: calendar_adjustment | Seed: 449947357
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:00:59.370893] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 295 | Method: calendar_adjustment | Seed: 548053111
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:01.295349] Stage: Analysis | Scenario: S5sample_size5000 | Rep: 722 | Method: calendar_adjustment | Seed: 833757025
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:07.388106] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 501 | Method: calendar_adjustment | Seed: 808116145
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:09.415196] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 703 | Method: calendar_adjustment | Seed: 758323578
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:09.972356] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 104 | Method: calendar_adjustment | Seed: 940237218
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:10.890128] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 505 | Method: calendar_adjustment | Seed: 81564929
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:11.616773] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 256 | Method: calendar_adjustment | Seed: 393383167
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:16.751286] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 611 | Method: calendar_adjustment | Seed: 994113771
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:17.622014] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 938 | Method: calendar_adjustment | Seed: 209755015
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:17.639484] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 338 | Method: calendar_adjustment | Seed: 948527393
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:17.921302] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 138 | Method: calendar_adjustment | Seed: 506322813
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:18.009974] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 63 | Method: calendar_adjustment | Seed: 94494190
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:19.323206] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 589 | Method: calendar_adjustment | Seed: 535308696
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:19.714069] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 290 | Method: calendar_adjustment | Seed: 733075733
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:24.845409] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 595 | Method: calendar_adjustment | Seed: 75823626
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:25.058542] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 846 | Method: calendar_adjustment | Seed: 115629163
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:27.021566] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 823 | Method: calendar_adjustment | Seed: 108856116
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:27.255962] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 623 | Method: calendar_adjustment | Seed: 95668628
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:27.950528] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 824 | Method: calendar_adjustment | Seed: 476282389
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:28.879235] Stage: Analysis | Scenario: S6sample_size6000 | Rep: 800 | Method: calendar_adjustment | Seed: 826097980
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:33.249017] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 676 | Method: calendar_adjustment | Seed: 276696631
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:35.411396] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 378 | Method: calendar_adjustment | Seed: 973863342
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:37.274584] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 230 | Method: calendar_adjustment | Seed: 789167733
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:38.662657] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 381 | Method: calendar_adjustment | Seed: 13891135
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:41.27372] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 234 | Method: calendar_adjustment | Seed: 543314852
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:41.950019] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 710 | Method: calendar_adjustment | Seed: 961357269
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:42.791356] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 711 | Method: calendar_adjustment | Seed: 872274663
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:43.955338] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 37 | Method: calendar_adjustment | Seed: 189426956
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:45.086515] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 638 | Method: calendar_adjustment | Seed: 649054097
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:48.632223] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 516 | Method: calendar_adjustment | Seed: 247619235
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:51.184092] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 369 | Method: calendar_adjustment | Seed: 124796398
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:51.368935] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 669 | Method: calendar_adjustment | Seed: 535015672
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:01:53.992911] Stage: Analysis | Scenario: S7sample_size7000 | Rep: 395 | Method: calendar_adjustment | Seed: 652570573
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:04.734646] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 453 | Method: calendar_adjustment | Seed: 197448550
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:08.425764] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 881 | Method: calendar_adjustment | Seed: 835457871
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:10.113101] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 358 | Method: calendar_adjustment | Seed: 754631028
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:11.228613] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 359 | Method: calendar_adjustment | Seed: 747886084
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:17.373137] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 514 | Method: calendar_adjustment | Seed: 815156271
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:18.531848] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 615 | Method: calendar_adjustment | Seed: 103732129
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:19.721105] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 966 | Method: calendar_adjustment | Seed: 908488755
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:20.276587] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 792 | Method: calendar_adjustment | Seed: 882554398
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:28.860286] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 250 | Method: calendar_adjustment | Seed: 124760187
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:29.868882] Stage: Analysis | Scenario: S8sample_size8000 | Rep: 150 | Method: calendar_adjustment | Seed: 212743382
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:37.448124] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 78 | Method: calendar_adjustment | Seed: 165244126
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:42.677856] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 982 | Method: calendar_adjustment | Seed: 756469106
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:47.036673] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 911 | Method: calendar_adjustment | Seed: 320699506
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:51.452271] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 864 | Method: calendar_adjustment | Seed: 304509720
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:53.709869] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 591 | Method: calendar_adjustment | Seed: 109719007
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:54.367709] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 566 | Method: calendar_adjustment | Seed: 335427244
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:57.617537] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 245 | Method: calendar_adjustment | Seed: 291240733
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:02:59.916266] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 896 | Method: calendar_adjustment | Seed: 38980759
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:01.208837] Stage: Analysis | Scenario: S9sample_size9000 | Rep: 847 | Method: calendar_adjustment | Seed: 474666632
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:11.405773] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 902 | Method: calendar_adjustment | Seed: 508911163
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:13.683295] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 104 | Method: calendar_adjustment | Seed: 513379158
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:21.369074] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 734 | Method: calendar_adjustment | Seed: 441869808
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:21.630224] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 809 | Method: calendar_adjustment | Seed: 933598003
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:25.850099] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 812 | Method: calendar_adjustment | Seed: 785804558
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:27.993608] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 564 | Method: calendar_adjustment | Seed: 613473179
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:31.258735] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 342 | Method: calendar_adjustment | Seed: 300856631
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:31.985308] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 567 | Method: calendar_adjustment | Seed: 198718694
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:32.630816] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 443 | Method: calendar_adjustment | Seed: 976091669
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:33.19804] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 418 | Method: calendar_adjustment | Seed: 178045794
+Error message: 'breaks' are not unique
+
+[2025-11-15 19:03:37.951185] Stage: Analysis | Scenario: S10sample_size10000 | Rep: 396 | Method: calendar_adjustment | Seed: 240740991
+Error message: 'breaks' are not unique
+
