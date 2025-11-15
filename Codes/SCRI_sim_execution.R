@@ -42,11 +42,11 @@ full_simulation(scenario_table = sample_size_tab,
                 n_sim = n_sim, 
                 seeds = get_seeds(n_sim, scenario_table = sample_size_tab), 
                 methods = methods, 
-                output_dir = here("Results"))
+                output_dir = here("Results","Raw_sample_size"))
 
 power_results <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
                                                                        scenario_table = sample_size_tab),
                                              nsim = n_sim,
-                                             results_dir = here("Results"),
+                                             results_dir = here("Results","Raw_sample_size"),
                                              summary_dir = file.path(here("Results"), "Summary"),
                                              summary_file_name = "Summary_all_scens")
