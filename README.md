@@ -44,6 +44,6 @@ To reproduce the simulation workflow:
 1. Clone the repository
 
 ```
-git clone 
+git clone https://github.com/trangtph/SCRI_Effectiveness.git
 ```
 2. Open `SCRI_sim_execution.R`, adjust the paths to the source codes and the desired output location as needed, and run the script in your R environment. 
