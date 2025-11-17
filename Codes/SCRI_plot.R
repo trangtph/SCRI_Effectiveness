@@ -101,7 +101,7 @@ power_results %>% ggplot( mapping = aes(x = size, y = VE_hat, colour = methods))
     breaks = power_results$size,          
     labels = power_results$n_event_size 
   ) + 
-  scale_color_discrete(name = "Model", labels = c("Adjust for calendar", "No seasonality adjustment")) + 
+  scale_color_discrete(name = "Model", labels = c("Adjust for calendar month", "No seasonality adjustment")) + 
   theme_bw() + 
   theme(legend.position = "bottom")
 dev.off()
@@ -118,7 +118,7 @@ power_results %>% ggplot( mapping = aes(x = size, y = VE_hat, colour = methods))
     breaks = power_results$size,          # the actual values used as breaks
     labels = power_results$n_event_size         # labels pulled from another variable
   ) + 
-  scale_color_discrete(name = "Model", labels = c("Adjust for calendar", "No seasonality adjustment")) + 
+  scale_color_discrete(name = "Model", labels = c("Adjust for calendar month", "No seasonality adjustment")) + 
   theme_bw() + 
   theme(legend.position = "bottom")
 dev.off()
