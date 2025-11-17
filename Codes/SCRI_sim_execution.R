@@ -49,4 +49,4 @@ power_results <- summarise_simulation_results(method_scen = method_scen(method_t
                                              nsim = n_sim,
                                              results_dir = here("Results","Raw_sample_size"),
                                              summary_dir = file.path(here("Results"), "Summary"),
-                                             summary_file_name = "Summary_all_scens")
+                                             summary_file_name = "Power_results")

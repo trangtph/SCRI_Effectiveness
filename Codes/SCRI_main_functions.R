@@ -299,16 +299,18 @@ summary_sim <- function(true_VE, result_table, n_sim=1000)
 
   # Number of missing values of estimated beta1 (e.g due to convergence)
   missing_estimate <- sum(is.na(result_table$est_V)) + n_sim - nrow(result_table)
+  convergence_issue <- sum(result_table$IRR_V > 50, na.rm = TRUE )
   
+  result_table2 <- filter(result_table, IRR_V < 50)
   # Bias
-  VE_hat <- mean(result_table[,"VE"], na.rm = TRUE)
-  bias_VE <- mean(result_table[,"VE"] -true_VE, na.rm = TRUE)
+  VE_hat <- mean(result_table2[,"VE"], na.rm = TRUE)
+  bias_VE <- mean(result_table2[,"VE"] -true_VE, na.rm = TRUE)
   mean_n_event <- mean(result_table[,"n_event"], na.rm = TRUE)
-  power <- mean(result_table$p_val < 0.05, na.rm = TRUE)
+  power <- mean(result_table2$p_val < 0.05, na.rm = TRUE)
   
 
   
-  performance <- data.frame(missing_estimate, VE_hat, bias_VE, mean_n_event, power)
+  performance <- data.frame(missing_estimate,convergence_issue, VE_hat, bias_VE, mean_n_event, power)
   
   performance
 }
