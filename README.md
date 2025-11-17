@@ -11,15 +11,16 @@ It contains the R code, simulation workflow, and results used to estimate the re
 .
 ├── .gitignore
 ├── README.md
-├── Codes                        <- R scripts for simulation and analysis
-│   ├── SCRI_main_functions.R           <- Core functions for data generation and SCRI modeling
+├── Codes                              <- R scripts for simulation and analysis
+│   ├── SCRI_main_functions.R          <- Core functions for data generation and SCRI modeling
 │   ├── SCRI_sim_workflow_functions.R  <- Workflow functions for running large-scale simulations
 │   ├── SCRI_helper_functions.R        <- Utility functions used across scripts
-│   └── SCRI_sim_execution.R           <- Script to execute the full simulation workflow
+│   ├── SCRI_sim_execution.R           <- Script to execute the full simulation workflow
+│   └── SCRI_plot.R                    <- Scripts to produce plots
 ├── Results
-│   ├── Raw_sample_size          <- Output from each simulation run
-│   └── Summary                  <- Aggregated summary of simulation results
-└── Plots                        <- Visualizations for reporting and protocol
+│   ├── Raw_sample_size                <- Output from each simulation run
+│   └── Summary                        <- Aggregated summary of simulation results
+└── Plots                              <- Visualizations for reporting and protocol
 
 ```
 
