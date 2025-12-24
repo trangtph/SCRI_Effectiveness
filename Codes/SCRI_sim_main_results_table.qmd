@@ -1,0 +1,112 @@
+---
+title: "SCRI Simulation - Results"
+author: "Trang Tu"
+format: docx
+execute: 
+  echo: false
+  warning: false
+  message: false
+  output: true
+  freeze: auto
+editor: visual
+---
+
+
+
+```{r}
+if (!require("pacman", quietly = TRUE)) {
+  install.packages("pacman")
+}
+library(pacman)
+pacman::p_load(knitr, 
+               dplyr,
+               readr,
+               tidyr,
+               here,
+               rio
+)
+options(scipen = 999)
+```
+
+::: {.landscape}
+
+# 1. Base case
+
+```{r}
+Summary_base_case_20251223 <- import(here("Results/Summary/Summary_base_case_20251223.xlsx"))
+```
+
+
+```{r}
+#| label: tbl-basecase
+#| tbl-cap: "Performance metrics for base case scenarios" 
+
+basecase_table <- Summary_base_case_20251223 %>% 
+  mutate("Bias of est_V (MCSE)" = paste0(round(bias_est_V,3), " (", round(bias_est_V_MCSE,3), ")"),
+         "Bias of VE (MCSE)" = paste0(round(bias_VE,3), " (", round(bias_VE_MCSE,3), ")"),
+         "Empirical SE of est_V (MCSE)" = paste0(round(se_est_V_hat,3), " (", round(se_est_V_hat_MCSE,3), ")"),
+         "Coverage of 95% CI of VE (MCSE)" = paste0(round(coverage_irr_V,3), " (", round(coverage_irr_V_MCSE,3), ")")) %>%
+  select(sample_size, "Bias of est_V (MCSE)",  "Empirical SE of est_V (MCSE)", "Bias of VE (MCSE)",  "Coverage of 95% CI of VE (MCSE)") %>% rename("Cohort size" = sample_size)
+  
+kable(basecase_table)
+```
+
+# 2. Misspecifying control and focal window
+
+```{r}
+all_scens <- import(here("Results/Summary/Summary_all_scens_20251223.xlsx"))
+
+```
+
+```{r}
+#| label: tbl-misspecification
+#| tbl-cap: "Performance metrics for scenarios of misspecifying focal and control windows" 
+
+
+all_scens <- all_scens %>% 
+  mutate("Bias of est_V (MCSE)" = paste0(round(bias_est_V,3), " (", round(bias_est_V_MCSE,3), ")"),
+         "Relative bias of est_V (MCSE)" = paste0(round(abs(relative_bias_est_V),3), " (", round(relative_bias_est_V_MCSE,3), ")"),
+         "Bias of VE (MCSE)" = paste0(round(bias_VE,3), " (", round(bias_VE_MCSE,3), ")"),
+         "Empirical SE of est_V (MCSE)" = paste0(round(se_est_V_hat,3), " (", round(se_est_V_hat_MCSE,3), ")"),
+         "Coverage of 95% CI of VE (MCSE)" = paste0(round(coverage_irr_V,3), " (", round(coverage_irr_V_MCSE,3), ")"),
+         scen = factor(scen, levels = c("misspecify_control", "misspecify_risk_sta", "misspecify_risk_end", "seasonality"),
+                       labels = c("Misspecify control window",
+                                  "Misspecify start of risk window",
+                                  "Misspecify end of risk window",
+                                  "Seasonality")))  %>% 
+  rename("Cohort size" = sample_size,
+         "Scenario" = scen) %>%
+  arrange(Scenario, "Cohort size")
+
+misspecify_table <- all_scens %>%
+  select(Scenario, "Cohort size", "Bias of est_V (MCSE)",  "Relative bias of est_V (MCSE)", "Bias of VE (MCSE)", "Coverage of 95% CI of VE (MCSE)") %>%
+  filter(Scenario != "Seasonality") 
+
+kable(misspecify_table)
+```
+
+
+# 3. Time-varying confounding effect of seasonality
+
+```{r}
+#| label: tbl-seasonality
+#| tbl-cap: "Performance metrics for scenarios of Time-varying confounding effect of seasonality"
+#| tbl-colwidths: [30, 14, 14, 14, 14, 14]
+
+seasonality_table <- all_scens %>% filter(Scenario == "Seasonality") %>%
+  mutate(infect_dist_id = case_when(base_infect_shape == 2.5 ~ 1,
+                             base_infect_shape == 20 ~ 2,
+                             TRUE ~ 3),
+  vacc_dist_id = case_when(vacc_mean_d == 180 & vacc_sd_d == 60 ~ 1,
+                           vacc_mean_d == 180 & vacc_sd_d == 20 ~ 2,
+                           vacc_mean_d == 80 & vacc_sd_d == 60 ~ 3,
+                           vacc_mean_d == 80 & vacc_sd_d == 20 ~ 4)
+) %>% 
+ mutate("Baseline infection risk distribution - Vaccination date distribution" = paste0(infect_dist_id,"-", vacc_dist_id)) %>% 
+ arrange(infect_dist_id, vacc_dist_id, "Cohort size") %>%
+ select("Baseline infection risk distribution - Vaccination date distribution", "Cohort size", "Bias of est_V (MCSE)",  "Relative bias of est_V (MCSE)", "Bias of VE (MCSE)", "Coverage of 95% CI of VE (MCSE)")
+
+kable(seasonality_table)
+```
+
+:::

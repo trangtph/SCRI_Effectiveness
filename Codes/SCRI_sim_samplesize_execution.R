@@ -23,7 +23,7 @@ pacman::p_load(
 )
 
 source(here("Codes", "SCRI_main_functions.R"))
-source(here("Codes", "SCRI_sim_workflow_functions.R"))
+source(here("Codes", "SCRI_sim_samplesize_workflow_functions.R"))
 source(here("Codes", "SCRI_helper_functions.R"))
 
 options(scipen = 999)
