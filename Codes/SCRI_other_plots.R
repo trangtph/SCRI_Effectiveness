@@ -75,9 +75,9 @@ gamma_risk_curve <- function(shape,
 
 # Function to plot daily infection risk
 plot_gamma_risk <- function(..., n_days = 365,
-                            xlab = "Day",
+                            xlab = "Days since start of follow-up",
                             ylab = "Daily risk",
-                            main = "Daily infection risk (Gamma)") {
+                            main = "Daily infection risk (Gamma distribution)") {
   
   scenarios <- list(...)
   colors <- c("black", "red", "blue", "darkgreen", "purple", "orange")
@@ -108,7 +108,7 @@ plot_gamma_risk <- function(..., n_days = 365,
 
 # Function to plot cumulative incidence of infection
 plot_gamma_ci <- function(...,
-                          xlab = "Day",
+                          xlab = "Days since start of follow-up",
                           ylab = "Cumulative incidence",
                           main = "Cumulative incidence (Gamma)") {
   
@@ -233,11 +233,11 @@ dens <- lapply(params, function(p) {
 })
 
 
-png(here("Plots", "Vaccination_4dist.png"), width = 1000, height = 800, units = "px", res = 150)
+png(here("Plots", "Distribution", "Vaccination_4dist.png"), width = 1000, height = 800, units = "px", res = 150)
 plot(x, dens[[1]], type = "l", lwd = 2, ylim=c(0, 0.02),
      col = "blue",
-     ylab = "Density", xlab = "Day of vaccination",
-     main = "Beta Distributions of Vaccination Date")
+     ylab = "Density", xlab = "Days since the start of follow-up",
+     main = "Vaccination Date (Beta Distributions)")
 
 lines(x, dens[[2]], lwd = 2, col = "red")
 lines(x, dens[[3]], lwd = 2, col = "darkgreen")
@@ -255,43 +255,76 @@ legend("topright",
        cex = 0.8)
 dev.off()
 
+png(here("Plots", "Distribution", "Vaccination_4dist2.png"),
+    width = 1000, height = 800, units = "px", res = 150)
+
+plot(x, dens[[1]], type = "l", lwd = 2, ylim = c(0, 0.02),
+     col = "black",
+     ylab = "Density", xlab = "Days since the start of follow-up",
+     main = "Vaccination Date (Uniform/Beta Distributions)")
+
+lines(x, dens[[2]], lwd = 2, col = "red")
+lines(x, dens[[3]], lwd = 2, col = "blue")
+lines(x, dens[[4]], lwd = 2, col = "darkgreen")
+
+## ---- ADD uniform distribution ---------------------------------------------
+uniform_height <- 1 / 287
+
+lines(c(1, 287),
+      c(uniform_height, uniform_height),
+      lwd = 2,
+      col = "grey",
+      lty = 2)
+
+legend("topright",
+       legend = c(
+         "Dist 0: Uniform [1–287]",
+         "Dist 1: Mean=180, SD=60",
+         "Dist 2: Mean=180, SD=20",
+         "Dist 3: Mean=80, SD=60",
+         "Dist 4: Mean=80, SD=20"
+       ),
+       col = c("grey", "black", "red", "blue", "darkgreen"),
+       lwd = 2,
+       lty = c(2, 1, 1, 1, 1),
+       cex = 0.8)
+
+dev.off()
+
 # ------------------------------------------------------------------------------
 # 3. Results of the simulation for sample size determination -------------------
 # ------------------------------------------------------------------------------
 
-power_results <- import(here("Results", "Summary", "Power_results.xlsx"))
+power_results <- import(here("Results", "Summary", "Power_results_20260106.xlsx"))
 power_results <- power_results %>% mutate(n_event_size = paste0(ceiling(mean_n_event), "\n(", size,")"),
                                           VE_hat = round(VE_hat, digits = 3))
 #Power plot
-png(here("Plots", "Power.png"), width = 15, height = 10, units = "cm", res = 150)
+png(here("Plots", "Sample size calculation", "Power_20260106.png"), width = 20, height = 10, units = "cm", res = 150)
 
-power_results %>% ggplot( mapping = aes(x = size, y = power, colour = methods)) +
-  geom_point(size = 3) +
-  geom_line(size = 1) +
+power_results %>% ggplot( mapping = aes(x = size, y = power)) +
+  geom_point(size = 3, color = "#2f357c") +
+  geom_line(linewidth = 1, color = "#2f357c") +
   geom_hline(yintercept=0.8, linetype="dashed") + 
   labs(x = "Mean number of events (corresponding cohort size)", y = "Power") +
   scale_x_continuous(
     breaks = power_results$size,          
     labels = power_results$n_event_size 
-  ) + 
-  scale_color_discrete(name = "Model", labels = c("Adjust for calendar month", "No seasonality adjustment")) + 
-  theme_bw() + 
-  theme(legend.position = "bottom")
+  ) +
+  theme_bw() 
 dev.off()
 
 # Bias plot
-png(here("Plots", "Bias.png"), width = 15, height = 10, units = "cm", res = 150)
+png(here("Plots", "Sample size calculation", "Bias_20260106.png"), width = 20, height = 10, units = "cm", res = 150)
 
-power_results %>% ggplot( mapping = aes(x = size, y = VE_hat, colour = methods)) +
-  geom_point(size = 1.5) +
-  geom_line(size = 1) +
+power_results %>% ggplot( mapping = aes(x = size, y = VE_hat)) +
+  geom_point(size = 1.5, color = "#2f357c") +
+  geom_line(linewidth = 1, color = "#2f357c") +
   geom_hline(yintercept=0.6, linetype="dashed") + 
   labs(x = "Mean number of events (corresponding cohort size)", y = "Estimated Vaccine Effectiveness \n True value = 0.6") +
   scale_x_continuous(
-    breaks = power_results$size,          # the actual values used as breaks
-    labels = power_results$n_event_size         # labels pulled from another variable
+    breaks = power_results$size,        
+    labels = power_results$n_event_size         
   ) + 
-  scale_color_discrete(name = "Model", labels = c("Adjust for calendar month", "No seasonality adjustment")) + 
-  theme_bw() + 
-  theme(legend.position = "bottom")
+  scale_y_continuous(breaks = seq(0.48, 0.6, by = 0.01), limits = c(0.48, 0.6)) +
+  theme_bw() 
 dev.off()

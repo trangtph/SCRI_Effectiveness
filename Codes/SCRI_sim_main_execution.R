@@ -86,6 +86,7 @@ base_case_results <- summarise_simulation_results(method_scen = method_scen(meth
                                                   summary_dir = file.path(here("Results"), "Summary"),
                                                   summary_file_name = "Summary_base_case_20251219")
 
+
 ##############################
 # 2 - Scenarios for bias quantification ----
 ##############################
@@ -94,15 +95,15 @@ base_case_results <- summarise_simulation_results(method_scen = method_scen(meth
 scen_table <- scenarios(vacc_seasonality = c("uniform", "beta"),
                         vacc_mean = c(180, 80),
                         vacc_sd = c(60, 20),
-                        baseline_infection_shape = c(2.5,10, 20),
-                        baseline_infection_mode = c(100, 300, 200),
-                        baseline_infection_min = c(0.0002, 0.0002, 0.0002),
-                        baseline_infection_max = c(0.002, 0.003, 0.003),
+                        baseline_infection_shape = c(2.5, 10, 20),
+                        baseline_infection_mode  = c(100, 300, 200),
+                        baseline_infection_min   = c(0.0002, 0.0002, 0.0002),
+                        baseline_infection_max   = c(0.002, 0.003, 0.003),
                         control_start_d = c(3),
-                        control_end_d = c(15, 7),
-                        risk_start_d = c(16, 8),
-                        risk_end_d = c(35,77),
-                        cohort_size = c(6000, 10000, 20000))
+                        control_end_d   = c(15, 7),
+                        risk_start_d    = c(16, 8),
+                        risk_end_d      = c(35, 77),
+                        cohort_size     = c(6000, 10000, 20000))
 
 ## Only fit SCRI model without adjustment for seasonality
 methods <- c("no_calendar")
@@ -117,6 +118,32 @@ full_simulation(scenario_table = scen_table,
                 methods = methods, 
                 output_dir = here("Results","Raw_results_all_scens"))
 
+## Run additional analysis adjusting for calendar time, for scenarios of time-varying confounding
+
+scen_time_varying <- scen_table[scen_table$scen == "seasonality",]
+methods <- c("calendar_30d", "calendar_7d") #calendar_adjustment
+set.seed(20251218)
+plan(multisession, workers = 4)
+n_sim <- 1000
+full_simulation(scenario_table = scen_time_varying, 
+                n_sim = n_sim, 
+                seeds = get_seeds(n_sim, scenario_table = scen_table), 
+                methods = methods, 
+                output_dir = here("Results","Raw_results_all_scens"))
+
+## Run additional analysis of scenarios with only seasonality of infection
+
+scen_time_varying2 <- scen_table[scen_table$scen == "seasonality" & scen_table$vacc_season == "uniform",]
+methods <- c("no_calendar", "calendar_30d", "calendar_7d") #calendar_adjustment
+set.seed(20251218)
+plan(multisession, workers = 40)
+n_sim <- 1000
+full_simulation(scenario_table = scen_time_varying2, 
+                n_sim = n_sim, 
+                seeds = get_seeds(n_sim, scenario_table = scen_table), 
+                methods = methods, 
+                output_dir = here("Results","Raw_results_all_scens"))
+
 ## Summarize the results
 results_all_scens <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
                                                                             scenario_table = scen_table),
@@ -126,3 +153,11 @@ results_all_scens <- summarise_simulation_results(method_scen = method_scen(meth
                                                   summary_dir = file.path(here("Results"), "Summary"),
                                                   summary_file_name = "Summary_all_scens_20251219")
 
+
+results_time_var <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
+                                                                            scenario_table = scen_table[scen_table$scen == "seasonality",]),
+                                                  nsim = n_sim,
+                                                  true_VE = 0.6,
+                                                  results_dir = file.path(getwd(), "Results", "Raw_results_all_scens"),
+                                                  summary_dir = file.path(getwd(),"Results", "Summary"),
+                                                  summary_file_name = "Summary_time_var_20260114")

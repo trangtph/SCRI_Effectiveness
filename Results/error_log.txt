@@ -34,3 +34,18 @@ Error message: 'from' must be a finite number
 [2025-12-18 17:22:28.841061] Stage: Analysis | Scenario: S1_misspecify_control_size6000 | Rep: 10 | Method: calendar_adjustment | Seed: 744132038
 Error message: 'from' must be a finite number
 
+[2026-01-08 17:46:33.497947] Stage: Analysis | Scenario: S10_seasonality_size6000 | Rep: 506 | Method: calendar_adjustment | Seed: 404525871
+Error message: 'breaks' are not unique
+
+[2026-01-08 17:46:31.130309] Stage: Analysis | Scenario: S10_seasonality_size6000 | Rep: 751 | Method: calendar_adjustment | Seed: 602108011
+Error message: 'breaks' are not unique
+
+[2026-01-08 17:46:33.866997] Stage: Analysis | Scenario: S10_seasonality_size6000 | Rep: 9 | Method: calendar_adjustment | Seed: 231415655
+Error message: 'breaks' are not unique
+
+[2026-01-08 17:48:42.920993] Stage: Analysis | Scenario: S10_seasonality_size6000 | Rep: 751 | Method: calendar_adjustment | Seed: 602108011
+Error message: 'breaks' are not unique
+
+[2026-01-08 20:38:01.46596] Stage: Analysis | Scenario: S10_seasonality_size6000 | Rep: 751 | Method: calendar_adjustment | Seed: 602108011
+Error message: 'breaks' are not unique
+

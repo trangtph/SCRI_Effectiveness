@@ -262,7 +262,7 @@ lollipop_plot <- function(data,
     
     geom_errorbar(
       aes(xmin = .data[[aes_x_low_ci]], xmax = .data[[aes_x_up_ci]]),
-      height = 0.1, alpha = 0.4,
+      width = 0.3, alpha = 0.6,
       orientation = "y"
     ) +
     
@@ -446,8 +446,8 @@ scen_table <- scenarios(vacc_seasonality = c("uniform", "beta"),
                         risk_end_d = c(35,77),
                         cohort_size = c(6000, 10000, 20000))
 
-## 2.2. Only SCRI model without adjustment for seasonality ----
-methods <- c("no_calendar")
+## 2.2. Three SCRI models  ----
+methods <- c("no_calendar", "calendar_30d", "calendar_7d")
 
 ## 2.3.Summarize the results ---- 
 results_all_scens <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
@@ -456,7 +456,7 @@ results_all_scens <- summarise_simulation_results(method_scen = method_scen(meth
                                                   true_VE = 0.6,
                                                   results_dir = here("Results","Raw_results_all_scens"),
                                                   summary_dir = file.path(here("Results"), "Summary"),
-                                                  summary_file_name = "Summary_all_scens_20251223")
+                                                  summary_file_name = "Summary_all_scens_20260115")
 
 ## 2.4. Plots ----
 
@@ -473,7 +473,7 @@ results_all_scens1 <- results_all_scens1 %>% mutate(across(c(sample_size), as.fa
 
 ### 2.4.2. Misspecifying control window ----
 
-misspecify_control <- results_all_scens1 %>% filter(scen == "misspecify_control")
+misspecify_control <- results_all_scens1 %>% filter(scen == "misspecify_control", methods == "no_calendar")
 
 ### Absolute bias of est_V ----
 lollipop_plot(data = misspecify_control, aes_x ="bias_est_V", 
@@ -515,9 +515,19 @@ lollipop_plot(data = misspecify_control, aes_x ="bias_VE",
               xlabel = "Bias of VE",
               plot_name = "mis_control_bias_VE")
 
+### Coverage ----
+lollipop_plot(data = misspecify_control, aes_x ="coverage_irr_V", 
+               aes_x_low_ci ="coverage_irr_V_low_CI", aes_x_up_ci = "coverage_irr_V_up_CI",
+               mode = "est",
+               refline = 0.95,
+               x_break = round(seq(from = 0.2, to = 1, by = 0.1),1),
+               x_limits = c(0.2, 1),
+               xlabel = "Coverage of the IRR estimates",
+               plot_name = "mis_control_coverage")
+
 ### 2.4.3. Misspecifying start of risk window ----
 
-misspecify_risk_sta <- results_all_scens1 %>% filter(scen == "misspecify_risk_sta")
+misspecify_risk_sta <- results_all_scens1 %>% filter(scen == "misspecify_risk_sta", methods == "no_calendar")
 
 ### Absolute bias of est_V ----
 lollipop_plot(data = misspecify_risk_sta, aes_x ="bias_est_V", 
@@ -560,9 +570,19 @@ lollipop_plot(data = misspecify_risk_sta, aes_x ="bias_VE",
               xlabel = "Bias of VE",
               plot_name = "mis_risksta_bias_VE")
 
+### Coverage ----
+lollipop_plot(data = misspecify_risk_sta, aes_x ="coverage_irr_V", 
+              aes_x_low_ci ="coverage_irr_V_low_CI", aes_x_up_ci = "coverage_irr_V_up_CI",
+              mode = "est",
+              refline = 0.95,
+              x_break = round(seq(from = 0.2, to = 1, by = 0.1),1),
+              x_limits = c(0.2, 1),
+              xlabel = "Coverage of the IRR estimates",
+              plot_name = "mis_risksta_coverage")
+
 ### 2.4.4. Misspecifying end of risk window ----
 
-misspecify_risk_end <- results_all_scens1 %>% filter(scen == "misspecify_risk_end")
+misspecify_risk_end <- results_all_scens1 %>% filter(scen == "misspecify_risk_end", methods == "no_calendar")
 
 ### Absolute bias of est_V ----
 lollipop_plot(data = misspecify_risk_end, aes_x ="bias_est_V", 
@@ -604,10 +624,19 @@ lollipop_plot(data = misspecify_risk_end, aes_x ="bias_VE",
               xlabel = "Bias of VE",
               plot_name = "mis_riskend_bias_VE")
 
+### Coverage ----
+lollipop_plot(data = misspecify_risk_end, aes_x ="coverage_irr_V", 
+              aes_x_low_ci ="coverage_irr_V_low_CI", aes_x_up_ci = "coverage_irr_V_up_CI",
+              mode = "est",
+              refline = 0.95,
+              x_break = round(seq(from = 0.2, to = 1, by = 0.1),1),
+              x_limits = c(0.2, 1),
+              xlabel = "Coverage of the IRR estimates",
+              plot_name = "mis_riskend_coverage")
 
-### 2.4.5. Time-varying confounding
+### 2.4.5. Time-varying confounding ----------------------------------------
 
-time_var <- results_all_scens1 %>% filter(scen == "seasonality")
+time_var <- results_all_scens1[results_all_scens1$scen == "seasonality",]
 
 time_var <- time_var %>% mutate(
   cohort_size_lab = factor(sample_size,
@@ -619,14 +648,23 @@ time_var <- time_var %>% mutate(
   vacc_dist_id = case_when(vacc_mean_d == 180 & vacc_sd_d == 60 ~ 1,
                            vacc_mean_d == 180 & vacc_sd_d == 20 ~ 2,
                            vacc_mean_d == 80 & vacc_sd_d == 60 ~ 3,
-                           vacc_mean_d == 80 & vacc_sd_d == 20 ~ 4)
+                           vacc_mean_d == 80 & vacc_sd_d == 20 ~ 4, 
+                           vacc_season == "uniform" ~ 0)
 )
 
 time_var <- time_var %>% mutate(
   season_id = paste0(infect_dist_id,"-", vacc_dist_id)) %>% arrange(season_id) %>%
   mutate(across(c(season_id), as.factor))
 
-lollipop_plot2 <- function(data,
+time_var <- time_var %>% mutate(
+  season_id = paste0(infect_dist_id,"-", vacc_dist_id)) %>% arrange(season_id) %>%
+  mutate(across(c(season_id, methods), as.factor)) %>%
+  mutate(season_id_num = as.numeric(season_id), 
+  method_offset = as.numeric(methods) * 0.15 - 0.30,   # Manual dodge: create offsets for each method
+  y_dodged = season_id_num + method_offset)
+
+
+lollipop_plot3 <- function(data,
                           aes_x, aes_x_low_ci, aes_x_up_ci,
                           mode = c("est", "irr"),   # "est" = linear scale, "irr" = log scale
                           refline = 0,               # 0 for bias, 1 or 2 for IRR
@@ -640,45 +678,64 @@ lollipop_plot2 <- function(data,
   mode <- match.arg(mode)
   
   png(here("Plots", paste0(plot_name, ".png")), 
-      width = 25, height = 10, units = "cm", res = 300)
+      width = 30, height = 18, units = "cm", res = 300)
   
   p <- ggplot(
     data,
-    aes(x = .data[[aes_x]], y = season_id, color = season_id)
+    aes(x = .data[[aes_x]], y = y_dodged, color = season_id)
   ) +
     geom_segment(aes(
       x = if (mode == "est") refline else log(refline),
       xend = .data[[aes_x]],
-      y = season_id,
-      yend = season_id
+      y = y_dodged,
+      yend = y_dodged
     ),
     linewidth = 0.6) +
     
-    geom_point(size = 1.5) +
+    geom_point(aes(shape = methods), size = 1.5) +
     
     geom_errorbar(
       aes(xmin = .data[[aes_x_low_ci]], xmax = .data[[aes_x_up_ci]]),
       width = 0.3, alpha = 0.6,
-      orientation = "y"
+      orientation = "y") +
+    
+    scale_y_continuous(
+      breaks = unique(data$season_id_num),
+      labels = levels(data$season_id)
     ) +
     
-    scale_y_discrete(
-      breaks = unique(data$season_id),
-      labels = levels(data$season_id)
-    ) + 
-    scale_color_manual(values = c("#2f357c","#b0799a","#e69b00","#355828","#6c5d9e","#bf3729","#e48171","#f5bb50","#9d9cd5","#17154f","#f6b3b0","#ada43b")) + 
+    scale_color_manual(values = c(
+      "#2f357c", "#b0799a", "#e69b00", "#355828",
+      "#6c5d9e", "#bf3729", "#e48171", "#f5bb50",
+      "#9d9cd5", "#17154f", "#f6b3b0", "#ada43b",
+      "#1b9e77", "#4d4d4d", "#8c6d31")) + 
     guides(color = "none") + 
     
-    facet_wrap(~ cohort_size_lab) +
+    scale_shape_manual(
+      name = "Method",
+      values = c(
+        "no_calendar"  = 16,
+        "calendar_7d"  = 17,
+        "calendar_30d" = 15
+      ),
+      labels = c(
+        "no_calendar"  = "No calendar adjustment",
+        "calendar_7d"  = "Calendar adjustment (7-day bin)",
+        "calendar_30d" = "Calendar adjustment (30-day bin)"
+      )
+    ) +
     
+    facet_wrap(~ cohort_size_lab, ncol = 2) +
     theme_bw() +
     theme(
       axis.title   = element_text(size = 12),
-      axis.text    = element_text(size = 9),
-      legend.title = element_text(size = 12),
+      axis.text    = element_text(size = 11),
+      legend.title = element_text(size = 11),
       legend.text  = element_text(size = 12),
-      strip.text   = element_text(size = 12)
-    ) +
+      strip.text   = element_text(size = 12),
+      legend.position = "bottom",
+      legend.box = "horizontal"
+      ) +
     labs(y = "Scenario of varying seasonality", x = xlabel) +
     coord_flip()
   
@@ -694,7 +751,6 @@ lollipop_plot2 <- function(data,
       geom_vline(xintercept = refline, linewidth = 1.2)
     
   } else if (mode == "irr") {
-    
     # log scale, but axis shows IRR values
     p <- p +
       scale_x_continuous(
@@ -709,42 +765,105 @@ lollipop_plot2 <- function(data,
   dev.off()
 }
 
-### Absolute bias of est_V ----
-lollipop_plot2(data = time_var, aes_x ="bias_est_V", 
-              aes_x_low_ci ="bias_est_V_low_CI", aes_x_up_ci = "bias_est_V_up_CI",
-              mode = "est",
-              refline = 0,
-              x_break = seq(from = -0.2, to = 0.7, by = 0.05),
-              x_limits = c(-0.2, 0.7),
-              xlabel = "Bias of est_V",
-              plot_name = "seasonality_bias_estV")
+#### Absolute bias of est_V ----
+lollipop_plot3(data = time_var, aes_x ="bias_est_V", 
+               aes_x_low_ci ="bias_est_V_low_CI", aes_x_up_ci = "bias_est_V_up_CI",
+               mode = "est",
+               refline = 0,
+               x_break = round(seq(from = -2.4, to = 0.7, by = 0.2),1),
+               x_limits = c(-2.4, 0.7),
+               xlabel = "Bias of est_V",
+               plot_name = "seasonality_bias_estV_3models")
 
 #### Relative bias of est_V ---
-lollipop_plot2(data = time_var, aes_x ="abs_relative_bias_estV", 
-              aes_x_low_ci ="abs_relative_bias_estV_low_CI", aes_x_up_ci = "abs_relative_bias_estV_up_CI",
-              mode = "est",
-              refline = 0,
-              x_break = seq(from = 0, to = 0.8, by = 0.05),
-              x_limits = c(0, 0.8),
-              xlabel = "Relative bias of est_V",
-              plot_name = "seasonality_bias_estV_relative")
+lollipop_plot3(data = time_var, aes_x ="abs_relative_bias_estV", 
+               aes_x_low_ci ="abs_relative_bias_estV_low_CI", aes_x_up_ci = "abs_relative_bias_estV_up_CI",
+               mode = "est",
+               refline = 0,
+               x_break = round(seq(from = 0, to = 2.6, by = 0.2),1),
+               x_limits = c(0, 2.5),
+               xlabel = "Relative bias of est_V",
+               plot_name = "seasonality_bias_estV_relative_3models")
 
-### Absolute bias of IRR ----
-lollipop_plot2(data = time_var, aes_x ="bias_IRR_V", 
-              aes_x_low_ci ="bias_IRR_V_low_CI", aes_x_up_ci = "bias_IRR_V_up_CI",
-              mode = "est",
-              refline = 0,
-              x_break = seq(from = -0.2, to = 0.6, by = 0.05),
-              x_limits = c(-0.2, 0.6),
-              xlabel = "Bias of IRR",
-              plot_name = "seasonality_bias_IRRV")
 
-### Absolute bias of VE ----
-lollipop_plot2(data = time_var, aes_x ="bias_VE", 
+#### Absolute bias of VE ----
+lollipop_plot3(data = time_var, aes_x ="bias_VE", 
                aes_x_low_ci ="bias_VE_low_CI", aes_x_up_ci = "bias_VE_up_CI",
                mode = "est",
                refline = 0,
-               x_break = round(seq(from = -0.6, to = 0.2, by = 0.05),2),
-               x_limits = c(-0.6, 0.2),
+               x_break = round(seq(from = -1, to = 0.1, by = 0.1),1),
+               x_limits = c(-1, 0.1),
                xlabel = "Bias of VE",
-               plot_name = "seasonality_bias_VE")
+               plot_name = "seasonality_bias_VE_3models")
+
+### Coverage ----
+lollipop_plot3(data = time_var, aes_x ="coverage_irr_V", 
+               aes_x_low_ci ="coverage_irr_V_low_CI", aes_x_up_ci = "coverage_irr_V_up_CI",
+               mode = "est",
+               refline = 0.95,
+               x_break = round(seq(from = 0.2, to = 1, by = 0.1),1),
+               x_limits = c(0.2, 1),
+               xlabel = "Coverage of the IRR estimates",
+               plot_name = "seasonality_coverage_3models")
+
+### Mean number of events
+mean_events_plot <- function(data,
+                             aes_x,
+                             x_break = NULL,
+                             x_limits = NULL,
+                             xlabel = "",
+                             plot_name) {
+  
+  png(here("Plots", paste0(plot_name, ".png")),
+      width = 25, height = 18, units = "cm", res = 300)
+  
+  p <- ggplot(
+    data,
+    aes(x = .data[[aes_x]],
+        y = season_id,
+        fill = season_id)
+  ) +
+    
+    geom_bar(stat = "identity") +
+    
+    scale_y_discrete(
+      breaks = unique(data$season_id),
+      labels = levels(data$season_id)
+    ) +
+    
+    scale_fill_manual(values = c(
+        "#2f357c", "#b0799a", "#e69b00", "#355828",
+        "#6c5d9e", "#bf3729", "#e48171", "#f5bb50",
+        "#9d9cd5", "#17154f", "#f6b3b0", "#ada43b",
+        "#1b9e77", "#4d4d4d", "#8c6d31")) +
+    
+    guides(fill = "none") +
+    
+    facet_wrap(~ cohort_size_lab, ncol = 2) +
+    
+    theme_bw() +
+    theme(
+      axis.title   = element_text(size = 12),
+      axis.text    = element_text(size = 11),
+      legend.title = element_text(size = 11),
+      legend.text  = element_text(size = 12),
+      strip.text   = element_text(size = 12),
+      legend.position = "bottom",
+      legend.box = "horizontal"
+    ) +
+    
+    labs(
+      y = "Scenario of varying seasonality",
+      x = xlabel
+    ) +
+    coord_flip()
+  
+  print(p)
+  dev.off()
+}
+
+mean_events_plot(data = time_var[time_var$methods=="no_calendar",], aes_x ="mean_n_event", 
+               x_break = seq(from = 0, to = 600, by = 100),
+               x_limits = c(0, 600),
+               xlabel = "Mean number of events",
+               plot_name = "seasonality_mean_nr_events")

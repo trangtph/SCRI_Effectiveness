@@ -3,7 +3,7 @@
 # 1 - Table of all sample sizes to test 
 ##############################
 
-sample_size_table <- function(size = seq(10000, 50000, by = 10000)) {
+sample_size_table <- function(size = c(seq(1000, 10000, by = 1000), 15000, 20000)) {
   
   sample_size_ <- expand.grid(size = size)
   
@@ -39,17 +39,22 @@ perform_one_run <- function(seed, rep, scen, methods, output_dir) {
   tryCatch({
     # --- Generate data ---
     data <- cohort_data(n_indiv = scen[['size']], 
-                         prop_vacc = 0.8, # proportion of vaccinated
-                         mean_vacc_date = 180, # Vacc date follows normal distribution
-                         sd_vacc_date = 100,   # Vacc date follows normal distribution
-                         max_risk_period = 78, # the longest risk period to be considered in SCRI
-                         n_days = 365,
-                         peak_VE = 0.6,
-                         day_start_immun = 8,
-                         day_peak_immun = 16,
-                         day_start_wane = 36,
-                         day_end_immun = 150,
-                         baseline_risk_vec = baseline_risk())
+                        prop_vacc = 0.8, # proportion of vaccinated
+                        vacc_dist = 'uniform',
+                        mean_vacc_date = NULL, 
+                        sd_vacc_date = NULL,   
+                        max_risk_period = 78, # the longest risk period to be considered in SCRI
+                        n_days = 365,
+                        peak_VE = 0.6,
+                        day_start_immun = 8,
+                        day_peak_immun = 16,
+                        day_start_wane = 36,
+                        day_end_immun = 150,
+                        baseline_risk_vec = baseline_risk(n_days = 365, 
+                                                          gamma_shape = 2.5,
+                                                          gamma_mode = 100, 
+                                                          min_risk = 2e-4,
+                                                          peak_risk = 2e-3))
 
   }, error = function(e) {
     log_error(e, stage = "Data generation", seed = seed, scen_name = scen[['scen_name']], rep = rep)
@@ -74,8 +79,8 @@ perform_one_run <- function(seed, rep, scen, methods, output_dir) {
                       control_end   = 7,
                       risk_start    = 17,
                       risk_end      = 35,
-                      start_calendar = 1,
-                      calendar_interval = 30)
+                      start_calendar = NA,
+                      calendar_interval = NA)
                                                            
     }, error = function(e) {
       log_error(e, stage = "Analysis",
@@ -156,7 +161,7 @@ summarise_simulation_results <- function(method_scen = method_scen(),
                                          nsim = n_sim,
                                          results_dir = here("Results"),
                                          summary_dir = file.path(here("Results"), "Summary"),
-                                         summary_file_name = "Summary_all_scens") {
+                                         summary_file_name = "Summary_sample_size") {
   create_directory(summary_dir)
   
   all_summaries <- list()

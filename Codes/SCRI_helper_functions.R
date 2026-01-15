@@ -29,7 +29,7 @@ append_to_csv <- function(out_df, file_path) {
 log_error <- function(e, stage, seed = NA, 
                       scen_name = NA, rep = NA,
                       method = NA, 
-                      output_dir = here("Results")) {
+                      output_dir = file.path(getwd(), "Results")) {
   
   if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
   

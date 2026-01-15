@@ -16,68 +16,108 @@
 scenarios <- function(vacc_seasonality = c("uniform", "beta"),
                       vacc_mean = c(180, 80),
                       vacc_sd = c(60, 20),
-                      baseline_infection_shape = c(2.5,10, 20),
-                      baseline_infection_mode = c(100, 300, 200),
-                      baseline_infection_min = c(0.0002, 0.0002, 0.0002),
-                      baseline_infection_max = c(0.002, 0.003, 0.003),
+                      baseline_infection_shape = c(2.5, 10, 20),
+                      baseline_infection_mode  = c(100, 300, 200),
+                      baseline_infection_min   = c(0.0002, 0.0002, 0.0002),
+                      baseline_infection_max   = c(0.002, 0.003, 0.003),
                       control_start_d = c(3),
-                      control_end_d = c(15, 7),
-                      risk_start_d = c(16, 8),
-                      risk_end_d = c(35,77),
-                      cohort_size = c(6000, 10000, 20000)) {
+                      control_end_d   = c(15, 7),
+                      risk_start_d    = c(16, 8),
+                      risk_end_d      = c(35, 77),
+                      cohort_size     = c(6000, 10000, 20000)) {
   
-  # Scenarios of misspecifying risk and control window, no seasonality of vaccination
+  ## ---- Misspecification scenarios ------------------------------------------
   scen_misspecify <- expand.grid(
-    scen = c("misspecify_control", "misspecify_risk_sta", "misspecify_risk_end"),
+    scen = c("misspecify_control",
+             "misspecify_risk_sta",
+             "misspecify_risk_end"),
     sample_size = cohort_size,
     KEEP.OUT.ATTRS = FALSE
   ) %>%
     mutate(
       base_infect_shape = baseline_infection_shape[1],
       base_infect_mode  = baseline_infection_mode[1],
-      base_infect_min = baseline_infection_min[1],
-      base_infect_max = baseline_infection_max[1],
-      vacc_season        = vacc_seasonality[1],
+      base_infect_min   = baseline_infection_min[1],
+      base_infect_max   = baseline_infection_max[1],
+      vacc_season       = vacc_seasonality[1],
       vacc_mean_d       = NA_real_,
       vacc_sd_d         = NA_real_,
       control_start     = control_start_d,
-      control_end       = c(control_end_d[1], rep(control_end_d[2], 2))[match(scen,
-                                                                              c("misspecify_control","misspecify_risk_sta","misspecify_risk_end"))],
-      risk_start        = c(risk_start_d[1], risk_start_d[2], risk_start_d[1])[match(scen,
-                                                                                     c("misspecify_control","misspecify_risk_sta","misspecify_risk_end"))],
-      risk_end          = c(risk_end_d[1], risk_end_d[1], risk_end_d[2])[match(scen,
-                                                                               c("misspecify_control","misspecify_risk_sta","misspecify_risk_end"))]
+      control_end = c(control_end_d[1], rep(control_end_d[2], 2))[
+        match(scen, c("misspecify_control",
+                      "misspecify_risk_sta",
+                      "misspecify_risk_end"))
+      ],
+      risk_start = c(risk_start_d[1],
+                     risk_start_d[2],
+                     risk_start_d[1])[
+                       match(scen, c("misspecify_control",
+                                     "misspecify_risk_sta",
+                                     "misspecify_risk_end"))
+                     ],
+      risk_end = c(risk_end_d[1],
+                   risk_end_d[1],
+                   risk_end_d[2])[
+                     match(scen, c("misspecify_control",
+                                   "misspecify_risk_sta",
+                                   "misspecify_risk_end"))
+                   ]
     )
   
-  # Scenarios of varying seasonality of baseline infection risk and vaccination date
-  shape_mode_pair <- tibble(
+  ## ---- Infection risk distributions --------------------------
+  infect_dist <- tibble(
     base_infect_shape = baseline_infection_shape,
     base_infect_mode  = baseline_infection_mode,
-    base_infect_min = baseline_infection_min,
-    base_infect_max = baseline_infection_max,
+    base_infect_min   = baseline_infection_min,
+    base_infect_max   = baseline_infection_max
   )
   
+  ## ---- Seasonality scenarios -----------------------------------------------
   scen_season <- expand.grid(
     scen = "seasonality",
     base_infect_shape = baseline_infection_shape,
     vacc_mean_d = vacc_mean,
-    vacc_sd_d = vacc_sd,
+    vacc_sd_d   = vacc_sd,
     sample_size = cohort_size,
     KEEP.OUT.ATTRS = FALSE
   ) %>%
     mutate(
-      vacc_season    = vacc_seasonality[2],
+      vacc_season  = vacc_seasonality[2],
       control_start = control_start_d,
       control_end   = control_end_d[2],
       risk_start    = risk_start_d[1],
       risk_end      = risk_end_d[1]
     ) %>%
-    left_join(shape_mode_pair, by = "base_infect_shape") %>%
-    relocate(c(base_infect_mode, base_infect_min, base_infect_max), .after = base_infect_shape)
+    left_join(infect_dist, by = "base_infect_shape") %>%
+    relocate(base_infect_mode, base_infect_min, base_infect_max,
+             .after = base_infect_shape)
   
+  ## ---- Infection-risk-only scenarios ----------------------
+  scen_infect_only <- expand.grid(
+    scen = "seasonality",
+    base_infect_shape = baseline_infection_shape,
+    sample_size = cohort_size,
+    KEEP.OUT.ATTRS = FALSE
+  ) %>%
+    left_join(infect_dist, by = "base_infect_shape") %>%
+    mutate(
+      vacc_season   = vacc_seasonality[1],  # uniform
+      vacc_mean_d   = NA_real_,
+      vacc_sd_d     = NA_real_,
+      control_start = control_start_d,
+      control_end   = control_end_d[2],
+      risk_start    = risk_start_d[1],
+      risk_end      = risk_end_d[1]
+    )
   
-  all_scen <- dplyr::bind_rows(scen_misspecify, scen_season)
+  ## ---- Combine all scenarios -----------------------------------------------
+  all_scen <- dplyr::bind_rows(
+    scen_misspecify,
+    scen_season,
+    scen_infect_only
+  )
   
+  ## ---- Scenario IDs and names ----------------------------------------------
   all_scen <- all_scen %>%
     mutate(
       scen_id   = row_number(),
@@ -134,6 +174,7 @@ perform_one_run <- function(seed, rep, scen, methods, output_dir) {
     log_error(e, stage = "Data generation", seed = seed, scen_name = scen[['scen_name']], rep = rep)
     return(NULL) 
   })
+  if (is.null(data)) return(invisible(NULL))
   
   
   # Ensure directories exist once ----
@@ -142,31 +183,67 @@ perform_one_run <- function(seed, rep, scen, methods, output_dir) {
   }))
   
   # Perform analysis and output results -----
+
   for (meth in methods) {
     
     file_path <- file.path(output_dir, meth, paste0(scen[['scen_name']], ".csv"))
     
-    tryCatch({      
-      out <- run_SCRI(dat = data, rep = rep, method = meth,
-                      n_days = 365,
-                      control_start = scen[['control_start']],
-                      control_end   = scen[['control_end']],
-                      risk_start    = scen[['risk_start']],
-                      risk_end      = scen[['risk_end']],
-                      start_calendar = NA,
-                      calendar_interval = NA)
-                                                           
+    out <- tryCatch({
+      
+      if (meth == "no_calendar") {
+        run_SCRI(
+          dat = data, rep = rep, method = "no_calendar",
+          n_days = 365,
+          control_start = scen[['control_start']],
+          control_end   = scen[['control_end']],
+          risk_start    = scen[['risk_start']],
+          risk_end      = scen[['risk_end']],
+          start_calendar = NA,
+          calendar_interval = NA
+        )
+      } else if (meth == "calendar_30d") {
+        run_SCRI(
+          dat = data, rep = rep, method = "calendar_adjustment",
+          n_days = 365,
+          control_start = scen[['control_start']],
+          control_end   = scen[['control_end']],
+          risk_start    = scen[['risk_start']],
+          risk_end      = scen[['risk_end']],
+          start_calendar = 31,
+          calendar_interval = 30
+        )
+        
+      } else if (meth == "calendar_7d") {
+        run_SCRI(
+          dat = data, rep = rep, method = "calendar_adjustment",
+          n_days = 365,
+          control_start = scen[['control_start']],
+          control_end   = scen[['control_end']],
+          risk_start    = scen[['risk_start']],
+          risk_end      = scen[['risk_end']],
+          start_calendar = 8,
+          calendar_interval = 7
+        )
+        
+      } else {
+        stop("Unknown method: ", meth)
+      }
+      
     }, error = function(e) {
       log_error(e, stage = "Analysis",
-                seed = seed, scen_name = scen[['scen_name']], rep = rep, method = meth)
+                seed = seed, scen_name = scen[['scen_name']],
+                rep = rep, method = meth)
+      return(NULL)
     })
+    
+    if (is.null(out)) next
     
     out <- as.data.frame(cbind(out, seed = seed))
     
     append_to_csv(out, file_path)
-    
-    
   }
+  invisible(NULL)
+  
 }
 
 ## --- Layer 2: Repeat 'Perform one run' n_sim times, for each scenario ---------
@@ -253,7 +330,13 @@ summarise_simulation_results <- function(method_scen = method_scen(),
       next
     }
     
-    sim_data <- read.csv(file_path)
+    sim_data <- tryCatch(
+      read.csv(file_path, stringsAsFactors = FALSE),
+      error = function(e) {
+        warning(paste("Error reading", file_path, ":", e$message))
+        return(NULL)
+      }
+    )
     if (is.null(sim_data)) next
     
     # Quantify bias
@@ -286,8 +369,8 @@ summarise_simulation_results <- function(method_scen = method_scen(),
   # Export file
   output_path <- file.path(summary_dir, paste0(summary_file_name,".xlsx"))
   export(summary_table_merge, output_path)
-  
-  return(summary_table_merge)
+
+  return(summary_table_merge) 
 }
 
 

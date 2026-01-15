@@ -17,7 +17,7 @@
 
 baseline_risk <- function(n_days = 365, # number of follow-up days for cohort
                           gamma_shape = 2.5,
-                          gamma_mode = 140, # Day of peak infection risk
+                          gamma_mode = 100, # Day of peak infection risk
                           min_risk = 2e-4,
                           peak_risk = 2e-3){
   # scale parameter from mode
@@ -190,7 +190,7 @@ run_SCRI <- function(dat,
                      control_end   = 7,
                      risk_start    = 17,
                      risk_end      = 35,
-                     start_calendar = 1,
+                     start_calendar = 31, #Start of the second interval, the 1st interval start at the start of observation time
                      calendar_interval = 30) {
 
   infection_cols <- grep("^day_", names(dat), value = TRUE)
@@ -278,12 +278,21 @@ run_SCRI <- function(dat,
       IRR_V, IRR_V_CI_Lower = IRR_L, IRR_V_CI_Upper = IRR_U,
       VE, VE_CI_Lower = VE_L, VE_CI_Upper = VE_U,
       n_event, p_val,
+      n_calendar_group = NA,
       row.names = NULL
     ))
     
   }
   
   else if (method == "calendar_adjustment"){
+    
+    calendar_time_group <- seq(start_calendar, n_days-(calendar_interval-1), by = calendar_interval) # The last group of calendar time starts at days 336
+    min_start <- min(long$control_start_d, na.rm = TRUE)
+    max_end <- max(long$risk_end_d, na.rm = TRUE)
+    
+    # Cut the calendar_time_group so that they lie within the observation period
+    calendar_time_group_cut <- calendar_time_group[
+      calendar_time_group >= min_start+(calendar_interval-1) & calendar_time_group <= max_end -(calendar_interval-1)] # So that the first and last group is adequately long 
     
     long2 <- SCCS::formatdata(indiv = id,
                astart = control_start_d,
@@ -293,11 +302,23 @@ run_SCRI <- function(dat,
                aedrug = control_end_d,
                expogrp =control_start,
                washout = c(1,risk_start-1-control_end),
-               agegrp = seq(start_calendar, n_days, by = calendar_interval),
+               agegrp = calendar_time_group_cut,
                data=long)
     # Relevel exposure so control period = reference
-    long2$vacc_date <- relevel(factor(long2$vacc_date), ref = "1") # Because it is coded as: 0 = risk period, 1 = control period, 2 = wash-out period 
-    mod <- summary(clogit(event ~ vacc_date + age + strata(indivL) + offset(log(interval)), data = long2))
+    long2$vacc_date <- relevel(factor(long2$vacc_date), ref = "1") # Because it is coded as: 0 = risk period, 1 = control period, 2 = wash-out period
+    
+    # Fit the Conditional Poisson model
+    # If there is only one "age" group: do not add "age" term in the model
+    n_age <- nlevels(factor(long2$age))
+    base_formula <- event ~ vacc_date + strata(indivL) + offset(log(interval))
+    
+    if (n_age > 1) {
+      form <- update(base_formula, . ~ . + age)
+    } else {
+      form <- base_formula
+    }
+    
+    mod <- summary(clogit(form, data = long2))
     
     # Extract estimates and return as data frame
     
@@ -314,6 +335,7 @@ run_SCRI <- function(dat,
     
     n_event <- mod$nevent
     p_val   <- mod$coefficients[1,5]
+    n_calendar_group <- n_age
     
     return(data.frame(
       rep = rep,
@@ -321,6 +343,7 @@ run_SCRI <- function(dat,
       IRR_V, IRR_V_CI_Lower = IRR_L, IRR_V_CI_Upper = IRR_U,
       VE, VE_CI_Lower = VE_L, VE_CI_Upper = VE_U,
       n_event, p_val,
+      n_calendar_group,
       row.names = NULL
     ))
   }
@@ -347,11 +370,13 @@ summary_sim <- function(true_VE, result_table, n_sim=1000)
   VE_hat <- mean(result_table2[,"VE"], na.rm = TRUE)
   bias_VE <- mean(result_table2[,"VE"] -true_VE, na.rm = TRUE)
   mean_n_event <- mean(result_table[,"n_event"], na.rm = TRUE)
+  mean_n_calendar_group <- mean(result_table[,"n_calendar_group"], na.rm = TRUE)
   power <- mean(result_table2$p_val < 0.05, na.rm = TRUE)
+  
   
 
   
-  performance <- data.frame(missing_estimate,convergence_issue, VE_hat, bias_VE, mean_n_event, power)
+  performance <- data.frame(missing_estimate,convergence_issue, VE_hat, bias_VE, mean_n_event, mean_n_calendar_group, power)
   
   performance
 }
@@ -368,7 +393,7 @@ summary_sim2 <- function(true_VE = 0.6, result_table, n_sim=1000)
   missing_estimate <- sum(is.na(result_table$est_V)) + n_sim - nrow(result_table)
   convergence_issue <- sum(result_table$IRR_V > 50, na.rm = TRUE )
   
-  result_table2 <- filter(result_table, IRR_V < 50)
+  result_table2 <- result_table[result_table$IRR_V < 50,]
   nsim2 = nrow(result_table2)
   # Mean number of events
   mean_n_event <- mean(result_table[,"n_event"], na.rm = TRUE)
