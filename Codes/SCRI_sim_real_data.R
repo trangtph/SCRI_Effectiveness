@@ -278,7 +278,7 @@ full_simulation_real <- function(scenario_table = scen_real,
 }
 
 # ------------------------------------------------------------------------------
-# 4. Test the scenario of no seasonality of infection --------------------------
+# 4. Base case: no seasonality of infection --------------------------
 # ------------------------------------------------------------------------------
 
 covid_risk_const <- rep(0.0001, length = length(covid_risk_base))

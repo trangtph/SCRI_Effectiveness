@@ -38,7 +38,7 @@ results_real <- results_real %>% mutate(
                         TRUE ~ "days 15-35")
 ) %>% mutate(across(c(risk_end_id, methods), as.factor)) %>%
   mutate(risk_end_id_num = as.numeric(risk_end_id), 
-         method_offset = as.numeric(methods) * 0.15 - 0.45,   # Manual dodge: create offsets for each method
+         method_offset = as.numeric(methods) * 0.15 - 0.3,   # Manual dodge: create offsets for each method
          y_dodged = risk_end_id_num + method_offset)
 
 
@@ -83,8 +83,8 @@ lollipop_plot_real <- function(data,
     ) +
     
     scale_color_manual(values = c(
-      "#2f357c", "#b0799a", "#e69b00", "#355828",
-      "#6c5d9e", "#bf3729", "#e48171", "#f5bb50",
+      "#bf3729","#2f357c", "#b0799a", "#e69b00", "#355828",
+      "#6c5d9e", "#e48171", "#f5bb50",
       "#9d9cd5", "#17154f", "#f6b3b0", "#ada43b",
       "#1b9e77", "#4d4d4d", "#8c6d31")) + 
     guides(color = "none") + 
@@ -100,7 +100,7 @@ lollipop_plot_real <- function(data,
       ),
       labels = c(
         "no_calendar"  = "No calendar adjustment",
-        "calendar_7d"  = "Calendar adj (7-day from d1)",
+        "calendar_7d"  = "Calendar adj (7-day bin)",
         "calendar_30d" = "Calendar adj (30-day bin)",
         "calendar_7df3"= "Calendar adj (7-day from d3)",
         "calendar_7df5"= "Calendar adj (7-day from d5)"
@@ -157,6 +157,16 @@ lollipop_plot_real(data = results_real, aes_x ="relative_bias_est_V",
                xlabel = "Relative bias of est_V",
                plot_name = "real_dat_bias_estV_relative_3models")
 
+#### Estimated VE ----
+# This is the VE corresponding to the average coefficient across replicates and its MCSE
+lollipop_plot_real(data = results_real, aes_x ="VE_mean_est", 
+               aes_x_low_ci ="VE_mean_est_low_CI", aes_x_up_ci = "VE_mean_est_up_CI",
+               mode = "est",
+               refline = 0.67,
+               x_break = round(seq(from = 0.65, to = 1, by = 0.05),2),
+               x_limits = c(0.65, 1),
+               xlabel = "Estimated VE and 95% Monte Carlo CI",
+               plot_name = "real_dat_VE_avg_estV")
 
 #### Absolute bias of VE ----
 lollipop_plot_real(data = results_real, aes_x ="bias_VE", 
@@ -200,8 +210,8 @@ mean_events_plot <- function(data,
     ) +
     
     scale_fill_manual(values = c(
-      "#2f357c", "#b0799a", "#e69b00", "#355828",
-      "#6c5d9e", "#bf3729", "#e48171", "#f5bb50",
+      "#bf3729", "#2f357c", "#b0799a", "#e69b00", "#355828",
+      "#6c5d9e",  "#e48171", "#f5bb50",
       "#9d9cd5", "#17154f", "#f6b3b0", "#ada43b",
       "#1b9e77", "#4d4d4d", "#8c6d31")) +
     
@@ -236,7 +246,9 @@ mean_events_plot(data = results_real[results_real$methods=="no_calendar",], aes_
                  xlabel = "Mean number of events",
                  plot_name = "real_dat_mean_nr_events")
 
+# -----------------------------------------------------------------------------
 # Repeat the analysis for the test scenario of no seasonality of infection ----
+# -----------------------------------------------------------------------------
 
 ## Some data manipulation ----
 results_real_test <- results_real_test %>% 
@@ -255,7 +267,7 @@ results_real_test <- results_real_test %>% mutate(
                           TRUE ~ "days 15-35")
 ) %>% mutate(across(c(risk_end_id, methods), as.factor)) %>%
   mutate(risk_end_id_num = as.numeric(risk_end_id), 
-         method_offset = as.numeric(methods) * 0.15 - 0.45,   # Manual dodge: create offsets for each method
+         method_offset = as.numeric(methods) * 0.15 - 0.3,   # Manual dodge: create offsets for each method
          y_dodged = risk_end_id_num + method_offset)
 
 
@@ -269,6 +281,16 @@ lollipop_plot_real(data = results_real_test, aes_x ="relative_bias_est_V",
                    xlabel = "Relative bias of est_V",
                    plot_name = "real_test_bias_estV_relative_3models")
 
+#### Estimated VE ----
+# This is the VE corresponding to the average coefficient across replicates and its MCSE
+lollipop_plot_real(data = results_real_test, aes_x ="VE_mean_est", 
+                   aes_x_low_ci ="VE_mean_est_low_CI", aes_x_up_ci = "VE_mean_est_up_CI",
+                   mode = "est",
+                   refline = 0.67,
+                   x_break = round(seq(from = 0.5, to = 1, by = 0.05),2),
+                   x_limits = c(0.5, 1),
+                   xlabel = "Estimated VE and 95% Monte Carlo CI",
+                   plot_name = "real_test_VE_avg_estV")
 
 #### Absolute bias of VE ----
 lollipop_plot_real(data = results_real_test, aes_x ="bias_VE", 

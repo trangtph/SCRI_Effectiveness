@@ -56,33 +56,12 @@ scen_real <- scen_real %>%
 
 methods <- c("no_calendar", "calendar_30d", "calendar_7d", "calendar_7df3", "calendar_7df5") #calendar_adjustment
 
-scen_real2 <- scen_real %>% filter(cohort_size == "500000")
-methods2 <- "calendar_4d"
-
 # ------------------------------------------------------------------------------
 # 2. Perform the simulation ----------------------------------------------------
 # ------------------------------------------------------------------------------
 
-set.seed(20251218)
-plan(multisession, workers = 40)
-n_sim <- 1000
-
-full_simulation_real(scenario_table = scen_real, 
-                     n_sim = n_sim, 
-                     seeds = get_seeds(n_sim, scenario_table = scen_real), 
-                     methods = methods, 
-                     output_dir = here("Results","Raw_results_real_20260319"))
-
-set.seed(20251218)
-plan(multisession, workers = 40)
-n_sim <- 1000
-
-full_simulation_real(scenario_table = scen_real2, 
-                     n_sim = n_sim, 
-                     seeds = get_seeds(n_sim, scenario_table = scen_real2), 
-                     methods = methods2, 
-                     output_dir = here("Results","Raw_results_real_3d_20260319"))
-
+# Simulation 1: Base case (no seasonality of infection)
+# Here there will be no time-varying confounding, only possible effect of model misspecification
 set.seed(20251218)
 plan(multisession, workers = 40)
 n_sim <- 1000
@@ -93,10 +72,23 @@ full_simulation_test(scenario_table = scen_real,
                      methods = methods, 
                      output_dir = here("Results","Raw_results_test_20260319"))
 
+# Simulation 2: Seasonality of both infection & vaccination + model misspecification
+set.seed(20251218)
+plan(multisession, workers = 40)
+n_sim <- 1000
+
+full_simulation_real(scenario_table = scen_real, 
+                     n_sim = n_sim, 
+                     seeds = get_seeds(n_sim, scenario_table = scen_real), 
+                     methods = methods, 
+                     output_dir = here("Results","Raw_results_real_20260319"))
 
 # ------------------------------------------------------------------------------
 # 3. Summarize the results ----------------------------------------------------
 # ------------------------------------------------------------------------------
+
+methods <- c("no_calendar", "calendar_30d", "calendar_7d") #calendar_adjustment 
+# We omit calendar_7df3 and calendar_7df5 because the results are not different from calendar_7d
 
 
 results_real <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
@@ -105,15 +97,8 @@ results_real <- summarise_simulation_results(method_scen = method_scen(method_ta
                                                  true_VE = 0.67,
                                                  results_dir = here("Results","Raw_results_real_20260319_2"),
                                                  summary_dir = file.path(here("Results"), "Summary"),
-                                                 summary_file_name = "Summary_real_20260319")
+                                                 summary_file_name = "Summary_real_20260412")
 
-results_real_4d <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods2),
-                                                                          scenario_table = scen_real2),
-                                                nsim = n_sim,
-                                                true_VE = 0.67,
-                                                results_dir = here("Results","Raw_results_real_4d_20260319"),
-                                                summary_dir = file.path(here("Results"), "Summary"),
-                                                summary_file_name = "Summary_real_4d_20260319")
 
 results_real_test <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
                                                                             scenario_table = scen_real),
@@ -121,6 +106,5 @@ results_real_test <- summarise_simulation_results(method_scen = method_scen(meth
                                                   true_VE = 0.67,
                                                   results_dir = here("Results","Raw_results_test_20260319"),
                                                   summary_dir = file.path(here("Results"), "Summary"),
-                                                  summary_file_name = "Summary_real_test_20260319")
+                                                  summary_file_name = "Summary_real_test_20260412")
 
-result_real <- rbind(results_real_all, results_real_3d)
