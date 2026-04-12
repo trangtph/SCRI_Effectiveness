@@ -286,7 +286,7 @@ run_SCRI <- function(dat,
   
   else if (method == "calendar_adjustment"){
     
-    calendar_time_group <- seq(start_calendar, n_days-(calendar_interval-1), by = calendar_interval) # The last group of calendar time starts at days 336
+    calendar_time_group <- seq(start_calendar, n_days-(calendar_interval-1), by = calendar_interval) 
     min_start <- min(long$control_start_d, na.rm = TRUE)
     max_end <- max(long$risk_end_d, na.rm = TRUE)
     
@@ -402,6 +402,8 @@ summary_sim2 <- function(true_VE = 0.6, result_table, n_sim=1000)
   est_V_hat <- mean(result_table2[,"est_V"], na.rm = TRUE)
   IRR_V_hat <- mean(result_table2[,"IRR_V"], na.rm = TRUE)
   VE_hat <- mean(result_table2[,"VE"], na.rm = TRUE)
+  VE_mean_est=V <- 1 - exp(est_V_hat)
+  
   
   # Variance 
   se_est_V_hat <- sqrt(1/(nsim2-1)*sum((result_table2[,"est_V"] - est_V_hat)^2, na.rm = TRUE)) #Empirical standard error
@@ -410,6 +412,7 @@ summary_sim2 <- function(true_VE = 0.6, result_table, n_sim=1000)
   se_est_V_hat_up_CI <- se_est_V_hat + 1.96*se_est_V_hat_MCSE
   
   mod_se_est_V_hat <- sqrt(mean((result_table2[,"se_V"])^2, na.rm = TRUE)) # Model-based SE
+  
   
   # Bias
   ## Absolute bias log scale
@@ -420,6 +423,9 @@ summary_sim2 <- function(true_VE = 0.6, result_table, n_sim=1000)
   
   est_V_hat_low_CI <-  est_V_hat - 1.96*bias_est_V_MCSE
   est_V_hat_up_CI <-  est_V_hat + 1.96*bias_est_V_MCSE
+  
+  VE_mean_est_low_CI <- 1 - exp(est_V_hat_up_CI)
+  VE_mean_est_up_CI <- 1 - exp(est_V_hat_low_CI)
   
   ## Relative bias log scale
   relative_bias_est_V <- mean((result_table2[,"est_V"]-true_est_V)/true_est_V, na.rm = TRUE)
@@ -461,6 +467,7 @@ summary_sim2 <- function(true_VE = 0.6, result_table, n_sim=1000)
                             est_V_hat, est_V_hat_low_CI, est_V_hat_up_CI,
                             IRR_V_hat, IRR_V_hat_low_CI, IRR_V_hat_up_CI,
                             VE_hat, VE_hat_low_CI, VE_hat_up_CI,
+                            VE_mean_est, VE_mean_est_low_CI, VE_mean_est_up_CI,
                             bias_est_V, bias_est_V_MCSE, bias_est_V_low_CI, bias_est_V_up_CI,
                             mod_se_est_V_hat, se_est_V_hat, se_est_V_hat_MCSE, se_est_V_hat_low_CI, se_est_V_hat_up_CI,
                             relative_bias_est_V, relative_bias_est_V_MCSE, relative_bias_est_V_low_CI, relative_bias_est_V_up_CI, 
