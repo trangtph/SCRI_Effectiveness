@@ -386,6 +386,7 @@ lollipop_plot_var(data = base_case_results2, aes_x ="se_est_V_hat",
                   plot_name = "basecase_empirical_se_est_V")
 
 
+
 ## Plot for mean number of events ----------------------------
 
 nr_event_plot <- function(data, aes_x, plot_name){
@@ -486,12 +487,12 @@ lollipop_plot(data = misspecify_control, aes_x ="bias_est_V",
               plot_name = "mis_control_bias_estV")
 
 #### Relative bias of est_V ---
-lollipop_plot(data = misspecify_control, aes_x ="abs_relative_bias_estV", 
-              aes_x_low_ci ="abs_relative_bias_estV_low_CI", aes_x_up_ci = "abs_relative_bias_estV_up_CI",
+lollipop_plot(data = misspecify_control, aes_x ="relative_bias_est_V", 
+              aes_x_low_ci ="relative_bias_est_V_low_CI", aes_x_up_ci = "relative_bias_est_V_up_CI",
               mode = "est",
               refline = 0,
-              x_break = seq(from = 0, to = 0.3, by = 0.05),
-              x_limits = c(0, 0.3),
+              x_break = seq(from = -0.3, to = 0, by = 0.05),
+              x_limits = c(-0.3, 0),
               xlabel = "Relative bias of est_V",
               plot_name = "mis_control_bias_estV_relative")
 
@@ -514,6 +515,14 @@ lollipop_plot(data = misspecify_control, aes_x ="bias_VE",
               x_limits = c(-0.3, 0.1),
               xlabel = "Bias of VE",
               plot_name = "mis_control_bias_VE")
+
+### Variance ----
+lollipop_plot_var(data = misspecify_control, aes_x ="se_est_V_hat", 
+                  aes_x_low_ci ="se_est_V_hat_low_CI", aes_x_up_ci = "se_est_V_hat_up_CI",
+                  plot_name = "mis_control_empirical_se_est_V")
+
+# Reduction of SE compared to basecase
+misspecify_control$se_est_V_hat/base_case_results2$se_est_V_hat
 
 ### Coverage ----
 lollipop_plot(data = misspecify_control, aes_x ="coverage_irr_V", 
@@ -540,12 +549,12 @@ lollipop_plot(data = misspecify_risk_sta, aes_x ="bias_est_V",
               plot_name = "mis_risksta_bias_estV")
 
 #### Relative bias of est_V ---
-lollipop_plot(data = misspecify_risk_sta, aes_x ="abs_relative_bias_estV", 
-              aes_x_low_ci ="abs_relative_bias_estV_low_CI", aes_x_up_ci = "abs_relative_bias_estV_up_CI",
+lollipop_plot(data = misspecify_risk_sta, aes_x ="relative_bias_est_V", 
+              aes_x_low_ci ="relative_bias_est_V_low_CI", aes_x_up_ci = "relative_bias_est_V_up_CI",
               mode = "est",
               refline = 0,
-              x_break = seq(from = 0, to = 0.3, by = 0.05),
-              x_limits = c(0, 0.3),
+              x_break = seq(from = -0.3, to = 0, by = 0.05),
+              x_limits = c(-0.3, 0),
               xlabel = "Relative bias of est_V",
               plot_name = "mis_risksta_bias_estV_relative")
 
@@ -579,6 +588,13 @@ lollipop_plot(data = misspecify_risk_sta, aes_x ="coverage_irr_V",
               x_limits = c(0.2, 1),
               xlabel = "Coverage of the IRR estimates",
               plot_name = "mis_risksta_coverage")
+### Variance ----
+lollipop_plot_var(data = misspecify_risk_sta, aes_x ="se_est_V_hat", 
+                  aes_x_low_ci ="se_est_V_hat_low_CI", aes_x_up_ci = "se_est_V_hat_up_CI",
+                  plot_name = "mis_risksta_empirical_se_est_V")
+
+# Reduction of SE compared to basecase
+1 - misspecify_risk_sta$se_est_V_hat/base_case_results2$se_est_V_hat
 
 ### 2.4.4. Misspecifying end of risk window ----
 
@@ -595,12 +611,12 @@ lollipop_plot(data = misspecify_risk_end, aes_x ="bias_est_V",
               plot_name = "mis_riskend_bias_estV")
 
 #### Relative bias of est_V ---
-lollipop_plot(data = misspecify_risk_end, aes_x ="abs_relative_bias_estV", 
-              aes_x_low_ci ="abs_relative_bias_estV_low_CI", aes_x_up_ci = "abs_relative_bias_estV_up_CI",
+lollipop_plot(data = misspecify_risk_end, aes_x ="relative_bias_est_V", 
+              aes_x_low_ci ="relative_bias_est_V_low_CI", aes_x_up_ci = "relative_bias_est_V_up_CI",
               mode = "est",
               refline = 0,
-              x_break = seq(from = 0, to = 0.3, by = 0.05),
-              x_limits = c(0, 0.3),
+              x_break = seq(from = -0.3, to = 0, by = 0.05),
+              x_limits = c(-0.3, 0),
               xlabel = "Relative bias of est_V",
               plot_name = "mis_riskend_bias_estV_relative")
 
@@ -633,6 +649,15 @@ lollipop_plot(data = misspecify_risk_end, aes_x ="coverage_irr_V",
               x_limits = c(0.2, 1),
               xlabel = "Coverage of the IRR estimates",
               plot_name = "mis_riskend_coverage")
+
+### Variance ----
+lollipop_plot_var(data = misspecify_risk_end, aes_x ="se_est_V_hat", 
+                  aes_x_low_ci ="se_est_V_hat_low_CI", aes_x_up_ci = "se_est_V_hat_up_CI",
+                  plot_name = "mis_riskend_empirical_se_est_V")
+
+# Reduction of SE compared to basecase
+1 - misspecify_risk_end$se_est_V_hat/base_case_results2$se_est_V_hat
+
 
 ### 2.4.5. Time-varying confounding ----------------------------------------
 
@@ -776,12 +801,12 @@ lollipop_plot3(data = time_var, aes_x ="bias_est_V",
                plot_name = "seasonality_bias_estV_3models")
 
 #### Relative bias of est_V ---
-lollipop_plot3(data = time_var, aes_x ="abs_relative_bias_estV", 
-               aes_x_low_ci ="abs_relative_bias_estV_low_CI", aes_x_up_ci = "abs_relative_bias_estV_up_CI",
+lollipop_plot3(data = time_var, aes_x ="relative_bias_est_V", 
+               aes_x_low_ci ="relative_bias_est_V_low_CI", aes_x_up_ci = "relative_bias_est_V_up_CI",
                mode = "est",
                refline = 0,
-               x_break = round(seq(from = 0, to = 2.6, by = 0.2),1),
-               x_limits = c(0, 2.5),
+               x_break = round(seq(from = -0.6, to = 2.6, by = 0.2),1),
+               x_limits = c(-0.7, 2.6),
                xlabel = "Relative bias of est_V",
                plot_name = "seasonality_bias_estV_relative_3models")
 
