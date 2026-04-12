@@ -1,0 +1,36 @@
+{
+  "chart": {
+    "title": "Daily COVID-19 vaccine doses administered per million people",
+    "subtitle": "7-day rolling average. All doses, including boosters, are counted individually.",
+    "citation": "Official data collated by Our World in Data (2024); World Health Organisation (2025); Population based on various sources (2024)",
+    "originalChartUrl": "https://ourworldindata.org/explorers/covid?zoomToSelection=true&time=2021-12-31..2023-01-01&facet=none&uniformYAxis=0&pickerSort=asc&pickerMetric=location&hideControls=false&Metric=Vaccine+doses&Interval=7-day+rolling+average&Relative+to+population=true&country=~USA",
+    "selection": [
+      "United States"
+    ]
+  },
+  "columns": {
+    "COVID-19 doses (daily, 7-day average, per million people)": {
+      "titleShort": "COVID-19 doses (daily, 7-day average, per million people)",
+      "titleLong": "COVID-19 doses (daily, 7-day average, per million people)",
+      "descriptionShort": "New COVID-19 vaccination doses administered (7-day smoothed) per 1,000,000 people in the total population",
+      "descriptionProcessing": "Per-capita values have been estimated by using the population in 2022 as a reference.",
+      "unit": "doses per million people",
+      "timespan": "",
+      "type": "Numeric",
+      "owidVariableId": 984980,
+      "shortName": "daily_vaccinations_smoothed_per_million",
+      "lastUpdated": "2024-08-14",
+      "citationShort": "Official data collated by Our World in Data (2024); World Health Organisation (2025); Population based on various sources (2024) – with major processing by Our World in Data",
+      "citationLong": "Official data collated by Our World in Data (2024); World Health Organisation (2025); Population based on various sources (2024) – with major processing by Our World in Data. “COVID-19 doses (daily, 7-day average, per million people)” [dataset]. Official data collated by Our World in Data, “COVID-19, vaccinations”; World Health Organisation, “COVID-19, vaccinations (WHO)”; Various sources, “Population” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/984980.metadata.json"
+    }
+  },
+  "dateDownloaded": "2026-02-25",
+  "activeFilters": {
+    "country": "~USA",
+    "zoomToSelection": "true",
+    "time": "2021-12-31..2023-01-01",
+    "facet": "none",
+    "uniformYAxis": "0"
+  }
+}

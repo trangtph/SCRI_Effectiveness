@@ -1,0 +1,32 @@
+{
+  "chart": {
+    "title": "Daily COVID-19 vaccine doses administered",
+    "subtitle": "All doses, including boosters, are counted individually.",
+    "citation": "Official data collated by Our World in Data (2024); World Health Organisation (2025)",
+    "originalChartUrl": "https://ourworldindata.org/explorers/covid?time=2021-12-31..2023-01-01&pickerSort=asc&pickerMetric=location&hideControls=false&Metric=Vaccine+doses&Interval=New+per+day&Relative+to+population=false&country=~USA",
+    "selection": [
+      "United States"
+    ]
+  },
+  "columns": {
+    "COVID-19 doses (daily)": {
+      "titleShort": "COVID-19 doses (daily)",
+      "titleLong": "COVID-19 doses (daily)",
+      "descriptionShort": "New COVID-19 vaccination doses administered (only calculated for consecutive days).",
+      "unit": "doses",
+      "timespan": "",
+      "type": "Numeric",
+      "owidVariableId": 984972,
+      "shortName": "daily_vaccinations",
+      "lastUpdated": "2024-08-14",
+      "citationShort": "Official data collated by Our World in Data (2024); World Health Organisation (2025) – with major processing by Our World in Data",
+      "citationLong": "Official data collated by Our World in Data (2024); World Health Organisation (2025) – with major processing by Our World in Data. “COVID-19 doses (daily)” [dataset]. Official data collated by Our World in Data, “COVID-19, vaccinations”; World Health Organisation, “COVID-19, vaccinations (WHO)” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/984972.metadata.json"
+    }
+  },
+  "dateDownloaded": "2026-02-25",
+  "activeFilters": {
+    "country": "~USA",
+    "time": "2021-12-31..2023-01-01"
+  }
+}
