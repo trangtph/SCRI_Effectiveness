@@ -49,3 +49,183 @@ Error message: 'breaks' are not unique
 [2026-01-08 20:38:01.46596] Stage: Analysis | Scenario: S10_seasonality_size6000 | Rep: 751 | Method: calendar_adjustment | Seed: 602108011
 Error message: 'breaks' are not unique
 
+[2026-03-05 22:59:05.598245] Stage: Data generation | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: NA | Seed: 1001
+Error message: could not find function "cohort_data_real"
+
+[2026-03-05 22:59:05.636865] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: no_calendar | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 22:59:05.637185] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: calendar_30d | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 22:59:05.637414] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: calendar_7d | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:02:07.006909] Stage: Data generation | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: NA | Seed: 1001
+Error message: object 'covid_vacc_us_22' not found
+
+[2026-03-05 23:02:07.008468] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: no_calendar | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:02:07.008669] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: calendar_30d | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:02:07.00885] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: calendar_7d | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:03:27.576614] Stage: Data generation | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: NA | Seed: 1001
+Error message: object 've_daily' not found
+
+[2026-03-05 23:03:27.577822] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: no_calendar | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:03:27.578069] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: calendar_30d | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:03:27.578303] Stage: Analysis | Scenario: S1_riskend21_size10000 | Rep: 1 | Method: calendar_7d | Seed: 1001
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:16.916341] Stage: Data generation | Scenario: S1_riskend21_size20000 | Rep: 1 | Method: NA | Seed: 553471106
+Error message: argument is of length zero
+
+[2026-03-05 23:41:16.959308] Stage: Analysis | Scenario: S1_riskend21_size20000 | Rep: 1 | Method: no_calendar | Seed: 553471106
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:16.959827] Stage: Analysis | Scenario: S1_riskend21_size20000 | Rep: 1 | Method: calendar_30d | Seed: 553471106
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:16.96007] Stage: Analysis | Scenario: S1_riskend21_size20000 | Rep: 1 | Method: calendar_7d | Seed: 553471106
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:16.992852] Stage: Data generation | Scenario: S1_riskend21_size20000 | Rep: 2 | Method: NA | Seed: 619005606
+Error message: argument is of length zero
+
+[2026-03-05 23:41:17.029714] Stage: Analysis | Scenario: S1_riskend21_size20000 | Rep: 2 | Method: no_calendar | Seed: 619005606
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:17.030066] Stage: Analysis | Scenario: S1_riskend21_size20000 | Rep: 2 | Method: calendar_30d | Seed: 619005606
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:17.030267] Stage: Analysis | Scenario: S1_riskend21_size20000 | Rep: 2 | Method: calendar_7d | Seed: 619005606
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:17.832611] Stage: Data generation | Scenario: S2_riskend21_size50000 | Rep: 1 | Method: NA | Seed: 681418207
+Error message: argument is of length zero
+
+[2026-03-05 23:41:17.867881] Stage: Analysis | Scenario: S2_riskend21_size50000 | Rep: 1 | Method: no_calendar | Seed: 681418207
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:17.868207] Stage: Analysis | Scenario: S2_riskend21_size50000 | Rep: 1 | Method: calendar_30d | Seed: 681418207
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:17.868392] Stage: Analysis | Scenario: S2_riskend21_size50000 | Rep: 1 | Method: calendar_7d | Seed: 681418207
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:17.966425] Stage: Data generation | Scenario: S2_riskend21_size50000 | Rep: 2 | Method: NA | Seed: 77909313
+Error message: argument is of length zero
+
+[2026-03-05 23:41:17.997854] Stage: Analysis | Scenario: S2_riskend21_size50000 | Rep: 2 | Method: no_calendar | Seed: 77909313
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:17.998164] Stage: Analysis | Scenario: S2_riskend21_size50000 | Rep: 2 | Method: calendar_30d | Seed: 77909313
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:17.998358] Stage: Analysis | Scenario: S2_riskend21_size50000 | Rep: 2 | Method: calendar_7d | Seed: 77909313
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:18.788865] Stage: Data generation | Scenario: S3_riskend21_size100000 | Rep: 1 | Method: NA | Seed: 475082040
+Error message: argument is of length zero
+
+[2026-03-05 23:41:18.82418] Stage: Analysis | Scenario: S3_riskend21_size100000 | Rep: 1 | Method: no_calendar | Seed: 475082040
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:18.824502] Stage: Analysis | Scenario: S3_riskend21_size100000 | Rep: 1 | Method: calendar_30d | Seed: 475082040
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:18.824679] Stage: Analysis | Scenario: S3_riskend21_size100000 | Rep: 1 | Method: calendar_7d | Seed: 475082040
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:18.85876] Stage: Data generation | Scenario: S3_riskend21_size100000 | Rep: 2 | Method: NA | Seed: 945447934
+Error message: argument is of length zero
+
+[2026-03-05 23:41:18.892398] Stage: Analysis | Scenario: S3_riskend21_size100000 | Rep: 2 | Method: no_calendar | Seed: 945447934
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:18.892734] Stage: Analysis | Scenario: S3_riskend21_size100000 | Rep: 2 | Method: calendar_30d | Seed: 945447934
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:18.892927] Stage: Analysis | Scenario: S3_riskend21_size100000 | Rep: 2 | Method: calendar_7d | Seed: 945447934
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:19.698508] Stage: Data generation | Scenario: S4_riskend35_size20000 | Rep: 1 | Method: NA | Seed: 923195115
+Error message: argument is of length zero
+
+[2026-03-05 23:41:19.730884] Stage: Analysis | Scenario: S4_riskend35_size20000 | Rep: 1 | Method: no_calendar | Seed: 923195115
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:19.731196] Stage: Analysis | Scenario: S4_riskend35_size20000 | Rep: 1 | Method: calendar_30d | Seed: 923195115
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:19.731391] Stage: Analysis | Scenario: S4_riskend35_size20000 | Rep: 1 | Method: calendar_7d | Seed: 923195115
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:19.768739] Stage: Data generation | Scenario: S4_riskend35_size20000 | Rep: 2 | Method: NA | Seed: 832678185
+Error message: argument is of length zero
+
+[2026-03-05 23:41:19.799593] Stage: Analysis | Scenario: S4_riskend35_size20000 | Rep: 2 | Method: no_calendar | Seed: 832678185
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:19.799874] Stage: Analysis | Scenario: S4_riskend35_size20000 | Rep: 2 | Method: calendar_30d | Seed: 832678185
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:19.800046] Stage: Analysis | Scenario: S4_riskend35_size20000 | Rep: 2 | Method: calendar_7d | Seed: 832678185
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:20.628373] Stage: Data generation | Scenario: S5_riskend35_size50000 | Rep: 1 | Method: NA | Seed: 240011640
+Error message: argument is of length zero
+
+[2026-03-05 23:41:20.660494] Stage: Analysis | Scenario: S5_riskend35_size50000 | Rep: 1 | Method: no_calendar | Seed: 240011640
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:20.660814] Stage: Analysis | Scenario: S5_riskend35_size50000 | Rep: 1 | Method: calendar_30d | Seed: 240011640
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:20.660985] Stage: Analysis | Scenario: S5_riskend35_size50000 | Rep: 1 | Method: calendar_7d | Seed: 240011640
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:20.724678] Stage: Data generation | Scenario: S5_riskend35_size50000 | Rep: 2 | Method: NA | Seed: 744132038
+Error message: argument is of length zero
+
+[2026-03-05 23:41:20.754905] Stage: Analysis | Scenario: S5_riskend35_size50000 | Rep: 2 | Method: no_calendar | Seed: 744132038
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:20.755204] Stage: Analysis | Scenario: S5_riskend35_size50000 | Rep: 2 | Method: calendar_30d | Seed: 744132038
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:20.755365] Stage: Analysis | Scenario: S5_riskend35_size50000 | Rep: 2 | Method: calendar_7d | Seed: 744132038
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:21.602866] Stage: Data generation | Scenario: S6_riskend35_size100000 | Rep: 1 | Method: NA | Seed: 586057199
+Error message: argument is of length zero
+
+[2026-03-05 23:41:21.646584] Stage: Analysis | Scenario: S6_riskend35_size100000 | Rep: 1 | Method: no_calendar | Seed: 586057199
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:21.646998] Stage: Analysis | Scenario: S6_riskend35_size100000 | Rep: 1 | Method: calendar_30d | Seed: 586057199
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:21.647195] Stage: Analysis | Scenario: S6_riskend35_size100000 | Rep: 1 | Method: calendar_7d | Seed: 586057199
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:21.689602] Stage: Data generation | Scenario: S6_riskend35_size100000 | Rep: 2 | Method: NA | Seed: 604088007
+Error message: argument is of length zero
+
+[2026-03-05 23:41:21.724732] Stage: Analysis | Scenario: S6_riskend35_size100000 | Rep: 2 | Method: no_calendar | Seed: 604088007
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:21.725099] Stage: Analysis | Scenario: S6_riskend35_size100000 | Rep: 2 | Method: calendar_30d | Seed: 604088007
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
+[2026-03-05 23:41:21.725287] Stage: Analysis | Scenario: S6_riskend35_size100000 | Rep: 2 | Method: calendar_7d | Seed: 604088007
+Error message: Check that is.data.table(DT) == TRUE. Otherwise, :=, `:=`(...) and let(...) are defined for use in j, once only and in particular ways. Note that namespace-qualification like data.table::`:=`(...) is not supported. See help(":=").
+
