@@ -84,7 +84,7 @@ base_case_results <- summarise_simulation_results(method_scen = method_scen(meth
                                                   true_VE = 0.6,
                                                   results_dir = here("Results","Raw_results_base_case"),
                                                   summary_dir = file.path(here("Results"), "Summary"),
-                                                  summary_file_name = "Summary_base_case_20251219")
+                                                  summary_file_name = "Summary_base_case_20260412")
 
 
 ##############################
@@ -151,7 +151,7 @@ results_all_scens <- summarise_simulation_results(method_scen = method_scen(meth
                                                   true_VE = 0.6,
                                                   results_dir = here("Results","Raw_results_all_scens"),
                                                   summary_dir = file.path(here("Results"), "Summary"),
-                                                  summary_file_name = "Summary_all_scens_20251219")
+                                                  summary_file_name = "Summary_all_scens_20260412")
 
 
 results_time_var <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
@@ -160,4 +160,4 @@ results_time_var <- summarise_simulation_results(method_scen = method_scen(metho
                                                   true_VE = 0.6,
                                                   results_dir = file.path(getwd(), "Results", "Raw_results_all_scens"),
                                                   summary_dir = file.path(getwd(),"Results", "Summary"),
-                                                  summary_file_name = "Summary_time_var_20260114")
+                                                  summary_file_name = "Summary_time_var_20260412")

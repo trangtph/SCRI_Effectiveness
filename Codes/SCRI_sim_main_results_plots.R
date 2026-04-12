@@ -457,7 +457,7 @@ results_all_scens <- summarise_simulation_results(method_scen = method_scen(meth
                                                   true_VE = 0.6,
                                                   results_dir = here("Results","Raw_results_all_scens"),
                                                   summary_dir = file.path(here("Results"), "Summary"),
-                                                  summary_file_name = "Summary_all_scens_20260115")
+                                                  summary_file_name = "Summary_all_scens_20260412")
 
 ## 2.4. Plots ----
 
@@ -505,6 +505,18 @@ lollipop_plot(data = misspecify_control, aes_x ="bias_IRR_V",
               x_limits = c(-0.1, 0.3),
               xlabel = "Bias of IRR",
               plot_name = "mis_control_bias_IRRV")
+
+### Estimated VE ----
+# This is the VE corresponding to the average coefficient across replicates and its MCSE
+lollipop_plot(data = misspecify_control, aes_x ="VE_mean_est", 
+              aes_x_low_ci ="VE_mean_est_low_CI", aes_x_up_ci = "VE_mean_est_up_CI",
+              mode = "est",
+              refline = 0.6,
+              x_break = round(seq(from = 0.50, to = 0.6, by = 0.01),2),
+              x_limits = c(0.50, 0.6),
+              xlabel = "Estimated VE and \n95% Monte Carlo CI",
+              plot_name = "mis_control_VE_avg_estV")
+
 
 ### Absolute bias of VE ----
 lollipop_plot(data = misspecify_control, aes_x ="bias_VE", 
@@ -568,6 +580,18 @@ lollipop_plot(data = misspecify_risk_sta, aes_x ="bias_IRR_V",
               xlabel = "Bias of IRR",
               plot_name = "mis_risksta_bias_IRRV")
 
+### Estimated VE ----
+# This is the VE corresponding to the average coefficient across replicates and its MCSE
+lollipop_plot(data = misspecify_risk_sta, aes_x ="VE_mean_est", 
+              aes_x_low_ci ="VE_mean_est_low_CI", aes_x_up_ci = "VE_mean_est_up_CI",
+              mode = "est",
+              refline = 0.6,
+              x_break = round(seq(from = 0.50, to = 0.6, by = 0.01),2),
+              x_limits = c(0.50, 0.6),
+              xlabel = "Estimated VE and \n95% Monte Carlo CI",
+              plot_name = "mis_risksta_VE_avg_estV")
+
+
 
 ### Absolute bias of VE ----
 lollipop_plot(data = misspecify_risk_sta, aes_x ="bias_VE", 
@@ -619,6 +643,18 @@ lollipop_plot(data = misspecify_risk_end, aes_x ="relative_bias_est_V",
               x_limits = c(-0.3, 0),
               xlabel = "Relative bias of est_V",
               plot_name = "mis_riskend_bias_estV_relative")
+
+### Estimated VE ----
+# This is the VE corresponding to the average coefficient across replicates and its MCSE
+lollipop_plot(data = misspecify_risk_end, aes_x ="VE_mean_est", 
+              aes_x_low_ci ="VE_mean_est_low_CI", aes_x_up_ci = "VE_mean_est_up_CI",
+              mode = "est",
+              refline = 0.6,
+              x_break = round(seq(from = 0.50, to = 0.6, by = 0.01),2),
+              x_limits = c(0.50, 0.6),
+              xlabel = "Estimated VE and \n95% Monte Carlo CI",
+              plot_name = "mis_riskend_VE_avg_estV")
+
 
 ### Absolute bias of IRR ----
 lollipop_plot(data = misspecify_risk_end, aes_x ="bias_IRR_V", 
@@ -810,6 +846,16 @@ lollipop_plot3(data = time_var, aes_x ="relative_bias_est_V",
                xlabel = "Relative bias of est_V",
                plot_name = "seasonality_bias_estV_relative_3models")
 
+#### Estimated VE ----
+# This is the VE corresponding to the average coefficient across replicates and its MCSE
+lollipop_plot3(data = time_var, aes_x ="VE_mean_est", 
+              aes_x_low_ci ="VE_mean_est_low_CI", aes_x_up_ci = "VE_mean_est_up_CI",
+              mode = "est",
+              refline = 0.6,
+              x_break = round(seq(from = 0.2, to = 1, by = 0.05),2),
+              x_limits = c(0.2, 1),
+              xlabel = "Estimated VE and 95% Monte Carlo CI",
+              plot_name = "seasonality_VE_avg_estV")
 
 #### Absolute bias of VE ----
 lollipop_plot3(data = time_var, aes_x ="bias_VE", 
