@@ -328,3 +328,131 @@ power_results %>% ggplot( mapping = aes(x = size, y = VE_hat)) +
   scale_y_continuous(breaks = seq(0.48, 0.6, by = 0.01), limits = c(0.48, 0.6)) +
   theme_bw() 
 dev.off()
+
+# ------------------------------------------------------------------------------
+# 4. Combination grid: 3 infection-risk curves x 5 vaccination-date curves -----
+# ------------------------------------------------------------------------------
+
+
+Tmax <- 365
+days <- 1:Tmax
+
+## Infection risk: scaled Gamma daily-risk curves -----
+# Gamma mode = (shape - 1) * scale  ->  scale = mode / (shape - 1)
+# Curve is the Gamma density rescaled so its peak equals the target peak risk.
+inf_params <- list(
+  A = list(shape = 2.5,  mode = 100, peak = 0.002, col = "black"),
+  B = list(shape = 20.0, mode = 200, peak = 0.003, col = "#bc371b"),
+  C = list(shape = 10.0, mode = 300, peak = 0.003, col = "#6c5d9e")
+)
+
+infection_risk <- function(t, shape, mode, peak) {
+  scale    <- mode / (shape - 1)
+  dens     <- dgamma(t,    shape = shape, scale = scale)
+  peakdens <- dgamma(mode, shape = shape, scale = scale)
+  peak * dens / peakdens
+}
+
+## ----- Vaccination date: Uniform + Beta (method of moments on [0, Tmax]) -----
+# For Y = Tmax * X, X ~ Beta(a,b):
+#   mu = mean/Tmax ,  v = (sd/Tmax)^2
+#   a + b = mu(1-mu)/v - 1 ,  a = mu(a+b) ,  b = (1-mu)(a+b)
+beta_from_moments <- function(mean, sd, T) {
+  mu <- mean / T
+  v  <- (sd / T)^2
+  ab <- mu * (1 - mu) / v - 1
+  c(a = mu * ab, b = (1 - mu) * ab)
+}
+
+vax_params <- list(
+  V0 = list(type = "unif", lo = 1, hi = 365,           col = "#4d4d4d", lty = 1, lab = "V0: Uniform [1-365]"),
+  V1 = list(type = "beta", mean = 180, sd = 60,        col = "#ea9e0a", lty = 1, lab = "V1: Mean 180, SD 60"),
+  V2 = list(type = "beta", mean = 180, sd = 20,        col = "#d47261", lty = 1, lab = "V2: Mean 180, SD 20"),
+  V3 = list(type = "beta", mean = 80,  sd = 60,        col = "#2f5328", lty = 1, lab = "V3: Mean 80, SD 60"),
+  V4 = list(type = "beta", mean = 80,  sd = 20,        col = "#17154f", lty = 1, lab = "V4: Mean 80, SD 20")
+)
+
+vax_density <- function(t, p, T) {
+  if (p$type == "unif") {
+    ifelse(t >= p$lo & t <= p$hi, 1 / (p$hi - p$lo), 0)
+  } else {
+    ab <- beta_from_moments(p$mean, p$sd, T)
+    dbeta(t / T, ab["a"], ab["b"]) / T
+  }
+}
+
+## ----- Fixed axis limits so every panel is directly comparable -----
+risk_max <- 0.005    # left axis (daily infection risk)
+dens_max <- 0.021    # right axis (vaccination density)
+
+inf_names <- names(inf_params)
+vax_names <- names(vax_params)
+
+png(here("Plots", "Distribution", "inf_vac_combination.png"), width = 2100, height = 1350, res = 300)
+
+par(mfrow = c(3, 5), # fill by row: 3 rows x 5 columns
+    mar = c(1, 1, 1, 1), # inner margin between cells
+    oma = c(3, 3.5, 1, 3.5)) # outer margin
+
+panel_no <- 0
+for (i in seq_along(inf_names)) {
+  for (j in seq_along(vax_names)) {
+    panel_no <- panel_no + 1
+    ip <- inf_params[[inf_names[i]]]
+    vp <- vax_params[[vax_names[j]]]
+    
+    risk  <- infection_risk(days, ip$shape, ip$mode, ip$peak)
+    vdens <- vax_density(days, vp, Tmax)
+    
+    # --- Infection risk (left axis) ---
+    plot(days, risk, type = "n",
+         ylim = c(0, risk_max), xlim = c(0, Tmax),
+         axes = FALSE, xlab = "", ylab = "")
+    
+    # shaded vaccination density (rescaled to left axis for visual fill)
+    vfill <- vdens / dens_max * risk_max
+    polygon(c(days[1], days, days[length(days)]),
+            c(0, vfill, 0),
+            col = adjustcolor(vp$col, alpha.f = 0.18), border = NA)
+    
+    # infection risk line on top
+    lines(days, risk, col = ip$col, lwd = 2.4)
+    # vaccination density outline
+    lines(days, vfill, col = vp$col, lwd = 1.8, lty = vp$lty)
+    
+    box(col = "grey70")
+    title(main = paste0("Scenario ", 4+(i-1)*5+(j-1),": Inf ", inf_names[i], " \u00d7 ", vax_names[j]),
+          cex.main = 0.7, font.main = 2)
+    
+    # axes only on edges to keep the grid clean
+    if (j == 1) axis(2, at = seq(0, risk_max, 0.001), las = 1, cex.axis = 0.7, col = "grey50")
+    if (j == length(vax_names)) {
+      axis(4, at = seq(0, risk_max, length.out = 5),
+           labels = signif(seq(0, dens_max, length.out = 5), 2),
+           las = 1, cex.axis = 0.7, col = "grey50")
+    }
+    if (i == length(inf_names)) axis(1, at = seq(0, 300, 100), cex.axis = 0.7, col = "grey50")
+  }
+}
+
+# outer labels
+mtext("Days since start of follow-up", side = 1, outer = TRUE, line = 1.6, cex = 0.7)
+mtext("Daily infection risk (left axis)", side = 2, outer = TRUE, line = 2.6, cex = 0.7)
+mtext("Vaccination density (right axis)", side = 4, outer = TRUE, line = 2.6, cex = 0.7)
+#mtext("15 scenarios: infection-risk curve (line) overlaid with vaccination-date curve (shaded)",
+#      side = 3, outer = TRUE, line = 1.8, cex = 1, font = 2)
+
+dev.off()
+
+## ----- Quick numeric check that the Beta fits reproduce target moments -----
+chk <- do.call(rbind, lapply(vax_names[-1], function(nm) {
+  p  <- vax_params[[nm]]
+  ab <- beta_from_moments(p$mean, p$sd, Tmax)
+  m  <- Tmax * ab["a"] / (ab["a"] + ab["b"])
+  v  <- Tmax^2 * ab["a"] * ab["b"] /
+    ((ab["a"] + ab["b"])^2 * (ab["a"] + ab["b"] + 1))
+  data.frame(dist = nm, target_mean = p$mean, fit_mean = round(m, 1),
+             target_sd = p$sd, fit_sd = round(sqrt(v), 1),
+             a = round(ab["a"], 2), b = round(ab["b"], 2))
+}))
+print(chk, row.names = FALSE)
