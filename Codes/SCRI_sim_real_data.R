@@ -28,9 +28,9 @@ pacman::p_load(
 )
 
 # Import daily baseline risk of COVID-19 infection
-covid_risk_us_22 <- import(here("Data", "covid_risk_us_22.csv"))
+covid_risk_us_22 <- import(here("Data", "covid_incidence_us_22.csv"))
 
-covid_risk_base <- covid_risk_us_22$daily_risk_adj
+covid_risk_base <- covid_risk_us_22$daily_risks
 
 # Import daily probability of COVID-19 vaccination 
 covid_vacc_us_22 <- import(here("Data", "covid_vacc_us_22.csv"))
@@ -82,7 +82,7 @@ cohort_data_real <- function(n_indiv = 10000,
     # identify valid days to look up VE (days outside this range are assigned VE = 0)
     valid <- !is.na(days_since_vacc) &
       days_since_vacc >= 0 &
-      days_since_vacc <= as.numeric(tail(names(ve_lookup_dat), 1))
+      days_since_vacc <= as.numeric(tail(names(ve_lookup), 1))
     
     # assign new VE for valid days
     VE[valid] <-
@@ -174,43 +174,7 @@ perform_one_run_real <- function(seed, rep, scen, methods, output_dir) {
           calendar_interval = 7
         )
         
-      } else if (meth == "calendar_7df3") {
-        run_SCRI(
-          dat = data, rep = rep, method = "calendar_adjustment",
-          n_days = 365,
-          control_start = 3,
-          control_end   = 7,
-          risk_start    = 15,
-          risk_end      = scen[['risk_end']],
-          start_calendar = 3,
-          calendar_interval = 7
-        )
-        
-      } else if (meth == "calendar_7df5") {
-        run_SCRI(
-          dat = data, rep = rep, method = "calendar_adjustment",
-          n_days = 365,
-          control_start = 3,
-          control_end   = 7,
-          risk_start    = 15,
-          risk_end      = scen[['risk_end']],
-          start_calendar = 5,
-          calendar_interval = 7
-        )
-        
-      } else if (meth == "calendar_3d") {
-        run_SCRI(
-          dat = data, rep = rep, method = "calendar_adjustment",
-          n_days = 365,
-          control_start = 3,
-          control_end   = 7,
-          risk_start    = 15,
-          risk_end      = scen[['risk_end']],
-          start_calendar = 4,
-          calendar_interval = 3
-        )
-        
-      } else {
+      }  else {
         stop("Unknown method: ", meth)
       }
       
@@ -352,42 +316,6 @@ perform_one_run_test <- function(seed, rep, scen, methods, output_dir) {
           risk_end      = scen[['risk_end']],
           start_calendar = 8,
           calendar_interval = 7
-        )
-        
-      } else if (meth == "calendar_7df3") {
-        run_SCRI(
-          dat = data, rep = rep, method = "calendar_adjustment",
-          n_days = 365,
-          control_start = 3,
-          control_end   = 7,
-          risk_start    = 15,
-          risk_end      = scen[['risk_end']],
-          start_calendar = 3,
-          calendar_interval = 7
-        )
-        
-      } else if (meth == "calendar_7df5") {
-        run_SCRI(
-          dat = data, rep = rep, method = "calendar_adjustment",
-          n_days = 365,
-          control_start = 3,
-          control_end   = 7,
-          risk_start    = 15,
-          risk_end      = scen[['risk_end']],
-          start_calendar = 5,
-          calendar_interval = 7
-        )
-        
-      } else if (meth == "calendar_4d") {
-        run_SCRI(
-          dat = data, rep = rep, method = "calendar_adjustment",
-          n_days = 365,
-          control_start = 3,
-          control_end   = 7,
-          risk_start    = 15,
-          risk_end      = scen[['risk_end']],
-          start_calendar = 5,
-          calendar_interval = 4
         )
         
       } else {
