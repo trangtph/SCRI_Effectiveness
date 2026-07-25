@@ -1,7 +1,9 @@
 ---
 title: "SCRI simulation - Results of simulations based on real-world data"
 author: "Trang Tu"
-format: docx
+format: 
+  docx:
+    reference-doc: reference.docx
 execute: 
   echo: false
   warning: false
@@ -28,7 +30,7 @@ options(scipen = 999)
 
 ::: landscape
 
-# 1. Base case without time-varying confounding 
+# 1. Base case without time-varying confounding
 
 ```{r}
 scens_real_base <- import(here("Results/Summary/Summary_real_test_20260412.xlsx"))
@@ -57,7 +59,6 @@ scens_real_base <- scens_real_base %>%
   arrange(Scenario, "SCCS model", "Cohort size")
 ```
 
-
 ```{r}
 #| label: tbl-basecase
 #| tbl-cap: "Performance metrics for Base case"
@@ -67,12 +68,13 @@ basecase_table <- scens_real_base %>%
 
  select(Scenario, "Cohort size", "SCCS model", 
         "Estimated VE (95% MC CI)", "Bias of est_V (MCSE)",  "Relative bias of est_V (MCSE)",
+        "Empirical SE of est_V (MCSE)",
         "Coverage of 95% CI of VE (MCSE)")
 
 kable(basecase_table)
 ```
 
-# 2. Scenarios with time-varying confounding 
+# 2. Scenarios with time-varying confounding
 
 ```{r}
 scens_real <- import(here("Results/Summary/Summary_real_20260412.xlsx"))
@@ -101,7 +103,6 @@ scens_real <- scens_real %>%
   arrange(Scenario, "SCCS model", "Cohort size")
 ```
 
-
 ```{r}
 #| label: tbl-real_dat
 #| tbl-cap: "Performance metrics for Scenarios with time-varying confounding"
@@ -111,6 +112,7 @@ real_dat_table <- scens_real %>%
 
  select(Scenario, "Cohort size", "SCCS model", 
         "Estimated VE (95% MC CI)", "Bias of est_V (MCSE)",  "Relative bias of est_V (MCSE)",
+        "Empirical SE of est_V (MCSE)",
         "Coverage of 95% CI of VE (MCSE)")
 
 kable(real_dat_table)
