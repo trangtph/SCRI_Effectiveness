@@ -272,7 +272,7 @@ lollipop_plot <- function(data,
     ) +
     
     scale_color_manual(
-      values = c("#bf3729","#2f357c","#e69b00")
+      values = c("#bc371b","#2f357c","#ea9e0a")
     ) +
     
     guides(color = "none") +
@@ -363,7 +363,7 @@ lollipop_plot_var <- function(data, aes_x, aes_x_low_ci, aes_x_up_ci, plot_name)
       limits = c(0, 0.8)) +
     
     scale_color_manual(
-      values = c("#bf3729","#2f357c","#e69b00")
+      values = c("#bc371b","#2f357c","#ea9e0a")
     ) +
     guides(color = "none") +
     theme_bw() +
@@ -408,7 +408,7 @@ nr_event_plot <- function(data, aes_x, plot_name){
     scale_y_continuous(breaks = seq(from = 0, to = 500, by = 50)) +
     
     scale_fill_manual(
-      values = c("#bf3729","#2f357c","#e69b00")
+      values = c("#bc371b","#2f357c","#ea9e0a")
     ) +
     guides(fill = "none") + 
     theme_bw() +
@@ -713,16 +713,15 @@ time_var <- time_var %>% mutate(
                            vacc_season == "uniform" ~ 0)
 )
 
-time_var <- time_var %>% mutate(
-  season_id = paste0(infect_dist_id,"-", vacc_dist_id)) %>% arrange(season_id) %>%
-  mutate(across(c(season_id), as.factor))
 
 time_var <- time_var %>% mutate(
   season_id = paste0(infect_dist_id,"-", vacc_dist_id)) %>% arrange(season_id) %>%
   mutate(across(c(season_id, methods), as.factor)) %>%
-  mutate(season_id_num = as.numeric(season_id), 
+  mutate(
+    season_id_num = match(season_id, levels(season_id)) + 3,
+    season_id_num2 = as.numeric(season_id), 
   method_offset = as.numeric(methods) * 0.15 - 0.30,   # Manual dodge: create offsets for each method
-  y_dodged = season_id_num + method_offset)
+  y_dodged = season_id_num2 + method_offset)
 
 
 lollipop_plot3 <- function(data,
@@ -761,15 +760,15 @@ lollipop_plot3 <- function(data,
       orientation = "y") +
     
     scale_y_continuous(
-      breaks = unique(data$season_id_num),
-      labels = levels(data$season_id)
+      breaks = unique(data$season_id_num2),
+      labels = unique(data$season_id_num)
     ) +
     
     scale_color_manual(values = c(
-      "#2f357c", "#b0799a", "#e69b00", "#355828",
-      "#6c5d9e", "#bf3729", "#e48171", "#f5bb50",
-      "#9d9cd5", "#17154f", "#f6b3b0", "#ada43b",
-      "#1b9e77", "#4d4d4d", "#8c6d31")) + 
+      "#2f357c", "#b0799a", "#ea9e0a", "#2f5328",
+      "#6c5d9e", "#bc371b", "#d47261", "#f6bb4e",
+      "#9d9cd5", "#17154f", "#ffc3bf", "#ada43b",
+      "#009E73", "#4d4d4d", "#907034")) + 
     guides(color = "none") + 
     
     scale_shape_manual(
@@ -797,7 +796,7 @@ lollipop_plot3 <- function(data,
       legend.position = "bottom",
       legend.box = "horizontal"
       ) +
-    labs(y = "Scenario of varying seasonality", x = xlabel) +
+    labs(y = "Scenarios of time-varying confounding", x = xlabel) +
     coord_flip()
   
   # ---- SCALE LOGIC ----------------------------------------------------------
@@ -903,10 +902,10 @@ mean_events_plot <- function(data,
     ) +
     
     scale_fill_manual(values = c(
-        "#2f357c", "#b0799a", "#e69b00", "#355828",
-        "#6c5d9e", "#bf3729", "#e48171", "#f5bb50",
-        "#9d9cd5", "#17154f", "#f6b3b0", "#ada43b",
-        "#1b9e77", "#4d4d4d", "#8c6d31")) +
+        "#2f357c", "#b0799a", "#ea9e0a", "#2f5328",
+        "#6c5d9e", "#bc371b", "#d47261", "#f6bb4e",
+        "#9d9cd5", "#17154f", "#ffc3bf", "#ada43b",
+        "#009E73", "#4d4d4d", "#907034")) +
     
     guides(fill = "none") +
     
@@ -938,3 +937,4 @@ mean_events_plot(data = time_var[time_var$methods=="no_calendar",], aes_x ="mean
                x_limits = c(0, 600),
                xlabel = "Mean number of events",
                plot_name = "seasonality_mean_nr_events")
+
