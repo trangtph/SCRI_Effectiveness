@@ -54,7 +54,7 @@ scen_real <- scen_real %>%
     scen_name = paste0("S", scen_id, "_riskend", risk_end, "_size", cohort_size)
   )
 
-methods <- c("no_calendar", "calendar_30d", "calendar_7d", "calendar_7df3", "calendar_7df5") #calendar_adjustment
+methods <- c("no_calendar", "calendar_30d", "calendar_7d") #calendar_adjustment
 
 # ------------------------------------------------------------------------------
 # 2. Perform the simulation ----------------------------------------------------
@@ -70,7 +70,7 @@ full_simulation_test(scenario_table = scen_real,
                      n_sim = n_sim, 
                      seeds = get_seeds(n_sim, scenario_table = scen_real), 
                      methods = methods, 
-                     output_dir = here("Results","Raw_results_test_20260319"))
+                     output_dir = here("Results","Raw_results_real_basae_20260725"))
 
 # Simulation 2: Seasonality of both infection & vaccination + model misspecification
 set.seed(20251218)
@@ -81,30 +81,30 @@ full_simulation_real(scenario_table = scen_real,
                      n_sim = n_sim, 
                      seeds = get_seeds(n_sim, scenario_table = scen_real), 
                      methods = methods, 
-                     output_dir = here("Results","Raw_results_real_20260319"))
+                     output_dir = here("Results","Raw_results_real_20260725"))
 
 # ------------------------------------------------------------------------------
 # 3. Summarize the results ----------------------------------------------------
 # ------------------------------------------------------------------------------
 
 methods <- c("no_calendar", "calendar_30d", "calendar_7d") #calendar_adjustment 
-# We omit calendar_7df3 and calendar_7df5 because the results are not different from calendar_7d
+# We omit calendar_7df2 and calendar_7df5 because the results are not different from calendar_7d
 
 
 results_real <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
                                                                            scenario_table = scen_real),
                                                  nsim = n_sim,
                                                  true_VE = 0.67,
-                                                 results_dir = here("Results","Raw_results_real_20260319_2"),
+                                                 results_dir = here("Results","Raw_results_real_20260725"),
                                                  summary_dir = file.path(here("Results"), "Summary"),
-                                                 summary_file_name = "Summary_real_20260412")
+                                                 summary_file_name = "Summary_real_20260725")
 
 
-results_real_test <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
+results_real_base <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
                                                                             scenario_table = scen_real),
                                                   nsim = n_sim,
                                                   true_VE = 0.67,
-                                                  results_dir = here("Results","Raw_results_test_20260319"),
+                                                  results_dir = here("Results","Raw_results_real_basae_20260725"),
                                                   summary_dir = file.path(here("Results"), "Summary"),
-                                                  summary_file_name = "Summary_real_test_20260412")
+                                                  summary_file_name = "Summary_real_test_20260725")
 
