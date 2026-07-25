@@ -19,7 +19,8 @@ source(here("Codes", "SCRI_helper_functions.R"))
 
 # Run first the script "SCRI_sim_real_data_execution.R"
 
-
+# Current code: for the data where COVID baseline risk change daily
+results_real <- import(here("Results", "Summary", "Summary_real_20260714_daily.xlsx"))
 
 # Some data manipulation ----
 results_real <- results_real %>% 
@@ -95,14 +96,14 @@ lollipop_plot_real <- function(data,
         "no_calendar"  = 16,
         "calendar_7d"  = 17,
         "calendar_30d" = 15, 
-        "calendar_7df3" = 23,
+        "calendar_7df2" = 23,
         "calendar_7df5" = 11
       ),
       labels = c(
         "no_calendar"  = "No calendar adjustment",
         "calendar_7d"  = "Calendar adj (7-day bin)",
         "calendar_30d" = "Calendar adj (30-day bin)",
-        "calendar_7df3"= "Calendar adj (7-day from d3)",
+        "calendar_7df2"= "Calendar adj (7-day from d9)",
         "calendar_7df5"= "Calendar adj (7-day from d5)"
       )
     ) +
@@ -152,10 +153,10 @@ lollipop_plot_real(data = results_real, aes_x ="relative_bias_est_V",
                aes_x_low_ci ="relative_bias_est_V_low_CI", aes_x_up_ci = "relative_bias_est_V_up_CI",
                mode = "est",
                refline = 0,
-               x_break = round(seq(from = 0, to = 7.5, by = 0.5),1),
-               x_limits = c(0, 7.5),
+               x_break = round(seq(from = 0, to = 8.5, by = 0.5),1),
+               x_limits = c(0, 8.5),
                xlabel = "Relative bias of est_V",
-               plot_name = "real_dat_bias_estV_relative_3models")
+               plot_name = "real_dat_bias_estV_relative_3models_daily")
 
 #### Estimated VE ----
 # This is the VE corresponding to the average coefficient across replicates and its MCSE
@@ -166,7 +167,7 @@ lollipop_plot_real(data = results_real, aes_x ="VE_mean_est",
                x_break = round(seq(from = 0.65, to = 1, by = 0.05),2),
                x_limits = c(0.65, 1),
                xlabel = "Estimated VE and 95% Monte Carlo CI",
-               plot_name = "real_dat_VE_avg_estV")
+               plot_name = "real_dat_VE_avg_estV_7d2_daily")
 
 #### Absolute bias of VE ----
 lollipop_plot_real(data = results_real, aes_x ="bias_VE", 
@@ -176,7 +177,7 @@ lollipop_plot_real(data = results_real, aes_x ="bias_VE",
                x_break = round(seq(from = -0.4, to = 0.2, by = 0.1),1),
                x_limits = c(-0.4, 0.2),
                xlabel = "Bias of VE",
-               plot_name = "real_dat_bias_VE_3models")
+               plot_name = "real_dat_bias_VE_3models_7d2")
 
 #### Mean number of events ----
 
