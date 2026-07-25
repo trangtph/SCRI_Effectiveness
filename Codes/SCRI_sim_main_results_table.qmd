@@ -1,7 +1,9 @@
 ---
 title: "SCRI Simulation - Results"
 author: "Trang Tu"
-format: docx
+format: 
+  docx:
+    reference-doc: reference.docx
 execute: 
   echo: false
   warning: false
@@ -43,12 +45,15 @@ basecase_table <- Summary_base_case_20260412 %>%
                                         round(VE_mean_est_low_CI,3), ",", 
                                         round(VE_mean_est_up_CI,3) ,")"),
     "Bias of est_V (MCSE)" = paste0(round(bias_est_V,3), " (", round(bias_est_V_MCSE,3), ")"),
+    "Relative bias of est_V (MCSE)" = paste0(round(relative_bias_est_V,3), " (", round(relative_bias_est_V_MCSE,3), ")"),
          "Empirical SE of est_V (MCSE)" = paste0(round(se_est_V_hat,3), " (",
                                                  round(se_est_V_hat_MCSE,3), ")"),
          "Coverage of 95% CI of VE (MCSE)" = paste0(round(coverage_irr_V,3), 
                                                     " (", round(coverage_irr_V_MCSE,3), ")")) %>%
   select(sample_size, "Estimated VE (95% MC CI)", 
-         "Bias of est_V (MCSE)",  "Empirical SE of est_V (MCSE)",  
+         "Bias of est_V (MCSE)",  
+         "Relative bias of est_V (MCSE)",
+         "Empirical SE of est_V (MCSE)",  
          "Coverage of 95% CI of VE (MCSE)") %>% 
   rename("Cohort size" = sample_size)
   
@@ -74,7 +79,6 @@ all_scens <- all_scens %>%
                                         round(VE_mean_est_up_CI,3) ,")"),
   "Bias of est_V (MCSE)" = paste0(round(bias_est_V,3), " (", round(bias_est_V_MCSE,3), ")"),
   "Relative bias of est_V (MCSE)" = paste0(round(relative_bias_est_V,3), " (", round(relative_bias_est_V_MCSE,3), ")"),
-  
   "Empirical SE of est_V (MCSE)" = paste0(round(se_est_V_hat,3), " (", 
                                           round(se_est_V_hat_MCSE,3), ")"),
   "Coverage of 95% CI of VE (MCSE)" = paste0(round(coverage_irr_V,3), " (",                                                                   round(coverage_irr_V_MCSE,3), ")"),
@@ -90,7 +94,9 @@ all_scens <- all_scens %>%
 misspecify_table <- all_scens %>%
   filter(Scenario != "Seasonality", methods == "no_calendar") %>%
   select(Scenario, "Cohort size", "Estimated VE (95% MC CI)", 
-        "Bias of est_V (MCSE)",  "Relative bias of est_V (MCSE)", "Coverage of 95% CI of VE (MCSE)")
+        "Bias of est_V (MCSE)",  "Relative bias of est_V (MCSE)",
+        "Empirical SE of est_V (MCSE)",
+        "Coverage of 95% CI of VE (MCSE)")
 
 
 kable(misspecify_table)
@@ -123,6 +129,7 @@ methods_fac = factor(methods, levels = c("no_calendar", "calendar_30d", "calenda
  select("Baseline infection risk distribution - Vaccination date distribution", methods_fac, 
         "Cohort size",
         "Estimated VE (95% MC CI)", "Bias of est_V (MCSE)",  "Relative bias of est_V (MCSE)",
+        "Empirical SE of est_V (MCSE)",
         "Coverage of 95% CI of VE (MCSE)")
 
 kable(seasonality_table)
