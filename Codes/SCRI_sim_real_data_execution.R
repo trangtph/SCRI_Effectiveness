@@ -70,7 +70,7 @@ full_simulation_test(scenario_table = scen_real,
                      n_sim = n_sim, 
                      seeds = get_seeds(n_sim, scenario_table = scen_real), 
                      methods = methods, 
-                     output_dir = here("Results","Raw_results_real_basae_20260725"))
+                     output_dir = here("Results","Raw_results_real_base_20260725"))
 
 # Simulation 2: Seasonality of both infection & vaccination + model misspecification
 set.seed(20251218)
@@ -104,7 +104,7 @@ results_real_base <- summarise_simulation_results(method_scen = method_scen(meth
                                                                             scenario_table = scen_real),
                                                   nsim = n_sim,
                                                   true_VE = 0.67,
-                                                  results_dir = here("Results","Raw_results_real_basae_20260725"),
+                                                  results_dir = here("Results","Raw_results_real_base_20260725"),
                                                   summary_dir = file.path(here("Results"), "Summary"),
                                                   summary_file_name = "Summary_real_test_20260725")
 

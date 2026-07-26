@@ -30,7 +30,7 @@ pacman::p_load(
 # Import daily baseline risk of COVID-19 infection
 covid_risk_us_22 <- import(here("Data", "covid_incidence_us_22.csv"))
 
-covid_risk_base <- covid_risk_us_22$daily_risks
+covid_risk_base <- covid_risk_us_22$daily_risk
 
 # Import daily probability of COVID-19 vaccination 
 covid_vacc_us_22 <- import(here("Data", "covid_vacc_us_22.csv"))
