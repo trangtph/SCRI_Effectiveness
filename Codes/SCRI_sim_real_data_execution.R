@@ -63,7 +63,7 @@ methods <- c("no_calendar", "calendar_30d", "calendar_7d") #calendar_adjustment
 # Simulation 1: Base case (no seasonality of infection)
 # Here there will be no time-varying confounding, only possible effect of model misspecification
 set.seed(20251218)
-plan(multisession, workers = 40)
+plan(multisession, workers = 3)
 n_sim <- 1000
 
 full_simulation_test(scenario_table = scen_real, 
@@ -74,30 +74,29 @@ full_simulation_test(scenario_table = scen_real,
 
 # Simulation 2: Seasonality of both infection & vaccination + model misspecification
 set.seed(20251218)
-plan(multisession, workers = 40)
+plan(multisession, workers = 3)
 n_sim <- 1000
 
 full_simulation_real(scenario_table = scen_real, 
                      n_sim = n_sim, 
                      seeds = get_seeds(n_sim, scenario_table = scen_real), 
                      methods = methods, 
-                     output_dir = here("Results","Raw_results_real_20260725"))
+                     output_dir = here("Results","Raw_results_real_20260726"))
 
 # ------------------------------------------------------------------------------
 # 3. Summarize the results ----------------------------------------------------
 # ------------------------------------------------------------------------------
 
 methods <- c("no_calendar", "calendar_30d", "calendar_7d") #calendar_adjustment 
-# We omit calendar_7df2 and calendar_7df5 because the results are not different from calendar_7d
 
 
 results_real <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
                                                                            scenario_table = scen_real),
                                                  nsim = n_sim,
                                                  true_VE = 0.67,
-                                                 results_dir = here("Results","Raw_results_real_20260725"),
+                                                 results_dir = here("Results","Raw_results_real_20260726"),
                                                  summary_dir = file.path(here("Results"), "Summary"),
-                                                 summary_file_name = "Summary_real_20260725")
+                                                 summary_file_name = "Summary_real_20260726")
 
 
 results_real_base <- summarise_simulation_results(method_scen = method_scen(method_table = as.data.frame(methods),
