@@ -716,7 +716,9 @@ time_var <- time_var %>% mutate(
 
 time_var <- time_var %>% mutate(
   season_id = paste0(infect_dist_id,"-", vacc_dist_id)) %>% arrange(season_id) %>%
-  mutate(across(c(season_id, methods), as.factor)) %>%
+  mutate(across(c(season_id), as.factor)) %>%
+  mutate(methods = factor(methods, 
+                          levels = c("no_calendar", "calendar_30d", "calendar_7d"))) %>%
   mutate(
     season_id_num = match(season_id, levels(season_id)) + 3,
     season_id_num2 = as.numeric(season_id), 
@@ -825,6 +827,103 @@ lollipop_plot3 <- function(data,
   dev.off()
 }
 
+lollipop_plot_poster <- function(data,
+                           aes_x, aes_x_low_ci, aes_x_up_ci,
+                           mode = c("est", "irr"),   # "est" = linear scale, "irr" = log scale
+                           refline = 0,               # 0 for bias, 1 or 2 for IRR
+                           irr_breaks = NULL,         # vector of IRR ticks, e.g. c(0.5,1,2,4)
+                           irr_limits = NULL,         # two-element vector, IRR scale
+                           x_break = NULL,            # for 'est' mode
+                           x_limits = NULL,           # for 'est' mode
+                           xlabel = "",
+                           plot_name) {
+  
+  mode <- match.arg(mode)
+  
+  png(here("Plots", paste0(plot_name, ".png")), 
+      width = 14, height = 18, units = "cm", res = 300)
+  
+  p <- ggplot(
+    data,
+    aes(x = .data[[aes_x]], y = y_dodged, color = season_id)
+  ) +
+    geom_segment(aes(
+      x = if (mode == "est") refline else log(refline),
+      xend = .data[[aes_x]],
+      y = y_dodged,
+      yend = y_dodged
+    ),
+    linewidth = 0.6) +
+    
+    geom_point(aes(shape = methods), size = 2) +
+    
+    
+    scale_y_continuous(
+      breaks = unique(data$season_id_num2),
+      labels = unique(data$season_id)
+    ) +
+    
+    scale_color_manual(values = c(
+      "#2f357c", "#b0799a", "#ea9e0a", "#2f5328",
+      "#6c5d9e", "#bc371b", "#d47261", "#f6bb4e",
+      "#9d9cd5", "#17154f", "#ffc3bf", "#ada43b",
+      "#009E73", "#4d4d4d", "#907034")) + 
+    guides(color = "none") + 
+    
+    scale_shape_manual(
+      name = "Model",
+      values = c(
+        "no_calendar"  = 16,
+        "calendar_7d"  = 17,
+        "calendar_30d" = 15
+      ),
+      labels = c(
+        "no_calendar"  = "No calendar \nadjustment",
+        "calendar_7d"  = "Calendar adjustment \n(7-day bin)",
+        "calendar_30d" = "Calendar adjustment \n(30-day bin)"
+      )
+    ) +
+    
+    facet_wrap(~ cohort_size_lab, ncol = 1) +
+    theme_bw() +
+    theme(
+      axis.title   = element_text(size = 12),
+      axis.text    = element_text(size = 11),
+      legend.title = element_text(size = 10),
+      legend.text  = element_text(size = 10),
+      strip.text   = element_text(size = 12),
+      legend.position = "bottom",
+      legend.box = "horizontal"
+    ) +
+    labs(y = "Scenarios of time-varying confounding", x = xlabel) +
+    coord_flip()
+  
+  # ---- SCALE LOGIC ----------------------------------------------------------
+  
+  if (mode == "est") {
+    # linear scale
+    p <- p +
+      scale_x_continuous(
+        breaks = x_break,
+        limits = x_limits
+      ) +
+      geom_vline(xintercept = refline, linewidth = 1.2)
+    
+  } else if (mode == "irr") {
+    # log scale, but axis shows IRR values
+    p <- p +
+      scale_x_continuous(
+        breaks = log(irr_breaks),
+        labels = irr_breaks,
+        limits = log(irr_limits)
+      ) +
+      geom_vline(xintercept = log(refline), linewidth = 1.2)
+  }
+  
+  print(p)
+  dev.off()
+}
+
 #### Absolute bias of est_V ----
 lollipop_plot3(data = time_var, aes_x ="bias_est_V", 
                aes_x_low_ci ="bias_est_V_low_CI", aes_x_up_ci = "bias_est_V_up_CI",
@@ -855,6 +954,15 @@ lollipop_plot3(data = time_var, aes_x ="VE_mean_est",
               x_limits = c(0.2, 1),
               xlabel = "Estimated VE and 95% Monte Carlo CI",
               plot_name = "seasonality_VE_avg_estV")
+
+lollipop_plot_poster(data = time_var, aes_x ="VE_mean_est", 
+               aes_x_low_ci ="VE_mean_est_low_CI", aes_x_up_ci = "VE_mean_est_up_CI",
+               mode = "est",
+               refline = 0.6,
+               x_break = round(seq(from = 0.2, to = 1, by = 0.1),1),
+               x_limits = c(0.2, 1),
+               xlabel = "Estimated Vaccine Effectiveness",
+               plot_name = "seasonality_VE_avg_estV_poster")
 
 #### Absolute bias of VE ----
 lollipop_plot3(data = time_var, aes_x ="bias_VE", 
@@ -937,4 +1045,100 @@ mean_events_plot(data = time_var[time_var$methods=="no_calendar",], aes_x ="mean
                x_limits = c(0, 600),
                xlabel = "Mean number of events",
                plot_name = "seasonality_mean_nr_events")
+
+
+# Plots for poster -----------------------------------------------------------
+true_VE <- 0.60
+
+# Data 
+# ve, lo, hi  = estimated VE and 95% Monte Carlo CI
+# empse       = empirical SE of beta_V ; empse_mcse = its Monte Carlo SE
+dat <- tibble::tribble(
+  ~scenario,                              ~n,     ~ve,   ~lo,    ~hi,   ~empse, ~empse_mcse,
+  "Base-case\n(Correctly specified model)",6000,  0.599, 0.593, 0.605,  0.240, 0.005,
+  "Base-case\n(Correctly specified model)",10000, 0.602, 0.597, 0.606,  0.170, 0.004,
+  "Base-case\n(Correctly specified model)",20000, 0.602, 0.599, 0.605,  0.123, 0.003,
+  "Misspecify referent window\n(Days 3-15)",6000,  0.515, 0.509, 0.521,  0.196, 0.004,
+  "Misspecify referent window\n(Days 3-15)",10000, 0.514, 0.510, 0.519,  0.148, 0.003,
+  "Misspecify referent window\n(Days 3-15)",20000, 0.514, 0.510, 0.517,  0.102, 0.002,
+  "Misspecify focal window\n(Days 8-35)", 6000,  0.510, 0.503, 0.516,  0.210, 0.005,
+  "Misspecify focal window\n(Days 8-35)", 10000, 0.512, 0.507, 0.517,  0.166, 0.004,
+  "Misspecify focal window\n(Days 8-35)", 20000, 0.516, 0.513, 0.520,  0.115, 0.003,
+  "Misspecify focal window\n(Days 16-77)", 6000,  0.533, 0.527, 0.538, 0.195, 0.004,
+  "Misspecify focal window\n(Days 16-77)", 10000, 0.542, 0.538, 0.546, 0.148, 0.003,
+  "Misspecify focal window\n(Days 16-77)", 20000, 0.543, 0.540, 0.546, 0.106, 0.002
+)
+
+# Factor ordering: scenarios top-to-bottom, cohort size as an ordered factor
+scen_levels <- c("Base-case\n(Correctly specified model)",
+                 "Misspecify referent window\n(Days 3-15)",
+                 "Misspecify focal window\n(Days 8-35)",
+                 "Misspecify focal window\n(Days 16-77)")
+
+dat <- dat %>%
+  mutate(
+    scenario = factor(scenario, levels = scen_levels),  # natural order: base-case -> referent -> focal 8 -> focal 16
+    n_fac    = factor(n, levels = c(6000, 10000, 20000),
+                      labels = c("6,000 (70)", "10,000 (140)", "20,000 (280)"))
+  )
+
+# Shared cohort-size colour scale (light -> dark blue with increasing n)
+cohort_cols <- c("6,000 (70)" = "#a2cff7ff", "10,000 (140)" = "#76b2e7ff", "20,000 (280)" = "#4a67adff")
+
+# Shared theme, sized up for poster viewing
+theme_poster <- theme_minimal(base_size = 10) +
+  theme(
+    panel.grid.minor   = element_blank(),
+    panel.grid.major.y = element_blank(),
+    axis.title         = element_text(size = 11),
+    axis.text          = element_text(size = 10, colour = "grey20"),
+    legend.position    = "right",
+    legend.title       = element_text(size = 8),
+    legend.text        = element_text(size = 8)
+    #plot.title         = element_text(size = 16, face = "bold"),
+    #plot.title.position = "plot"
+  )
+
+# PLOT 1: Estimated VE with 95% Monte Carlo CI
+#   distance from each point to the dashed line = bias
+dodge <- position_dodge(width = 0.6)
+
+p_ve <- ggplot(dat, aes(x = ve, y = scenario, colour = n_fac, group = n_fac)) +
+  geom_vline(xintercept = true_VE, linetype = "dashed",
+             colour = "grey30", linewidth = 0.7) +
+  annotate("text", x = true_VE-0.03, y = 4.3, label = "True VE = 0.60",
+           colour = "grey30", size = 3, vjust = 0) +
+  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0.25,
+                 position = dodge, linewidth = 0.7) +
+  geom_point(position = dodge, size = 2) +
+  scale_y_discrete(limits = rev) +   # base-case on top; factor stays in natural order for plot 2
+  scale_colour_manual(values = cohort_cols, name = "Cohort size\n(mean number \nof event)") +
+  scale_x_continuous(breaks = seq(0.48, 0.62, 0.02), limits = c(0.48, 0.63)) +
+  labs(x = "Estimated VE (95% Monte Carlo CI)", y = NULL) +
+  theme_poster
+
+# PLOT 2: Empirical SE of beta_V vs cohort size (with MCSE)
+#   EmpSE shrinks ~ 1/sqrt(n); bias (Plot 1) does not. Precision, not bias.
+scen_cols <- c("Base-case\n(Correctly specified model)" = "#185FA5",
+               "Misspecify referent window\n(Days 3-15)" = "#1D9E75",
+               "Misspecify focal window\n(Days 8-35)" = "#D85A30",
+               "Misspecify focal window\n(Days 16-77)" = "#7F77DD")
+
+
+pd <- position_dodge(width = 0.5)
+p_empse <- ggplot(dat, aes(x = n_fac, y = empse, colour = scenario, group = scenario)) +
+  #geom_line(linewidth = 0.7) +
+  geom_errorbar(aes(ymin = empse - empse_mcse, ymax = empse + empse_mcse),
+                width = 0.15, linewidth = 0.6, position = pd) +
+  geom_point(size = 1.5, position = pd) +
+  scale_colour_manual(values = scen_cols, name = "Scenario") +
+  labs(x = "Cohort size (mean number of event)", y = expression("Empirical SE of " * beta[V])) +
+  guides(colour = guide_legend(nrow = 2)) +
+  theme_poster
+
+# Save: vector PDF + 300 dpi PNG (individual and combined)
+out_dir <- here("Plots")  # writes next to this script; change if needed
+
+ggsave(file.path(out_dir, "estimated_VE_poster.png"), p_ve, units = "cm", width = 14.5, height = 7, dpi = 300)
+ggsave(file.path(out_dir, "empirical_SE_poster.png"), p_empse, units = "cm", width = 14, height = 8, dpi = 300)
 

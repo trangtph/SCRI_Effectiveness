@@ -169,7 +169,7 @@ g3 <- gamma_risk_curve(
 png(here("Plots", "Distribution", "Infection_CI_3dist1.png"), width = 1000, height = 800, units = "px", res = 150)
 plot_gamma_ci(g1, g2, g3)
 dev.off()
-png(here("Plots", "Distribution", "Infection_risk_3dist1.png"), width = 1000, height = 800, units = "px", res = 150)
+png(here("Plots", "Distribution", "Infection_risk_3dist_poster.png"), width = 16, height = 11, units = "cm", res = 300)
 plot_gamma_risk(g1, g2, g3)
 dev.off()
 png(here("Plots", "Distribution", "Infection_risk_basecase.png"), width = 1000, height = 800, units = "px", res = 150)
@@ -255,8 +255,8 @@ legend("topright",
        cex = 0.8)
 dev.off()
 
-png(here("Plots", "Distribution", "Vaccination_4dist2.png"),
-    width = 1000, height = 800, units = "px", res = 150)
+png(here("Plots", "Distribution", "Vaccination_5dist_poster.png"),
+    width = 16, height = 11, units = "cm", res = 300)
 
 plot(x, dens[[1]], type = "l", lwd = 2, ylim = c(0, 0.02),
      col = "black",
